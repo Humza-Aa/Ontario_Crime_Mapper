@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 //Importing Routes
 const authRoute = require("./routes/auth");
+const postRoute = require("./routes/post");
 
 //connect to db
 mongoose
@@ -25,6 +26,7 @@ app.use(express.json());
 
 //Route Middleware
 app.use("/api/newUser", authRoute);
+app.use('/api/post', postRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
