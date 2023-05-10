@@ -129,6 +129,7 @@ def ScraperMain():
 
 
 def sortData(scrapedTweet):
+    print("Sorting Scraped Data")
     # List: catagory (Missing...), Status(Update, Located)
     computedData = []
 
@@ -195,7 +196,9 @@ def addToDB(computedData):
     collection_name = db["tweetsData"]
     res = collection_name.insert_many(computedData)
     print("Added To DataBase")
+    print("Completed")
 
+print("Scraping Initiated")
 tweets = ScraperMain()
 sortedData = sortData(tweets)
 addToDB(sortedData)
