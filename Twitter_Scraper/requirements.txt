@@ -1,0 +1,5 @@
+locationtagger==0.0.1
+nltk==3.8.1
+pymongo==4.3.3
+python-dotenv==1.0.0
+selenium==4.9.1
