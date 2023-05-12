@@ -1,0 +1,32 @@
+.HeaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 60px;
+}
+
+.headerName {
+    width: 50%;
+}
+
+.cName {
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.linksDiv {
+    display: inherit;
+    justify-content: flex-end;
+    width: 50%;
+
+}
+
+.headerLinks > h4 {
+    margin: 0;
+    padding: 0 15px;
+}
+
+.headerLinks > .loginBtn {
+    padding: 0 30px 0 20px;
+}
+
