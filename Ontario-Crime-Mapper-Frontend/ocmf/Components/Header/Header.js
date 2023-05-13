@@ -5,9 +5,9 @@ export default function Header() {
     <>
       <div className={styles.HeaderContainer}>
         <div className={styles.headerName}>
-          <h2 className={styles.cName}>OCM</h2>
+          <h1 className={styles.cName}>OCM</h1>
         </div>
-        <div className={styles.linksDiv}>
+        <nav className={styles.linksDiv}>
           <div className={styles.headerLinks}>
             <h4>Another Link</h4>
           </div>
@@ -18,9 +18,13 @@ export default function Header() {
             <h4>Another Link</h4>
           </div>
           <div className={styles.headerLinks}>
-            <h4 className={styles.loginBtn}>Login</h4>
+            <button className={styles.loginBtn} href="">
+              <a href="/loginPage">
+                <h6 className={styles.loginText}>Login</h6>{" "}
+              </a>
+            </button>
           </div>
-        </div>
+        </nav>
       </div>
     </>
   );
