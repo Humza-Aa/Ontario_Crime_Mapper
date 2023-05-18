@@ -3,8 +3,11 @@ const User = require("../model/User");
 const { registerValidation, loginValidation } = require("./validation");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cookieParser = require('cookie-parser');
 
 router.post("/register", async (req, res) => {
+  const resEmail = req.query.email;
+  const resPass = req.query.password;
   //Validate Data
   const { error } = registerValidation(req.body);
   if (error) {
@@ -12,14 +15,14 @@ router.post("/register", async (req, res) => {
   }
 
   //Check if user exists
-  const emailExist = await User.findOne({ email: req.body.email });
+  const emailExist = await User.findOne({ email: resEmail });
   if (emailExist) {
     return res.status(400).send("Email Already Exist");
   }
 
   //Hash Password
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  const hashedPassword = await bcrypt.hash(resPass, salt);
 
   //Create a New User
   const user = new User({
@@ -35,30 +38,49 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
-  const { error } = loginValidation(req.body);
+router.post("/login", async (req, res) => {
+  const resEmail = req.body.params.email;
+  const resPass = req.body.params.password;
+  // console.log(req.query.email)
+  const { error } = loginValidation(req.body.params);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
 
   const user = await User.findOne({
-    email: req.body.email,
+    email: resEmail,
   });
   if (!user) {
-    return res.status(400).send(`Email: ${req.body.email} does not exist`);
+    return res.status(400).send(`Email: ${resEmail} does not exist`);
   }
 
-  bcrypt.compare(req.body.password, user.password, function (err, data) {
-    if (err) throw err;
-    if (!data) {
-      return res.status(401).json({ msg: "Invalid credential" });
-    }
+  const validPass = await bcrypt.compare(resPass, user.password);
+
+  if (!validPass) {
+    console.log("error in pass");
+    return res.status(401).send({ msg: "Invalid credential" });
+  }
+
+  const accessToken = jwt.sign({ _id: user._id }, process.env.TOKENPASSWORD, {
+    expiresIn: "5m",
   });
 
-  const token = jwt.sign({ _id: user._id }, process.env.TOKENPASSWORD, {
-    expiresIn: "30s",
+  const refreshToken = jwt.sign(
+    { _id: user._id },
+    process.env.REFRESHTOKENPASSWORD,
+    {
+      expiresIn: "1d",
+    }
+  );
+
+  res.cookie("refresh_jwt", refreshToken, {
+    httpOnly: true,
+    // sameSite: "None",
+    // secure: true,
+    maxAge: 24 * 60 * 60 * 1000,
   });
-  res.header("auth-token", token).send(token);
+
+  return res.header("auth-token", accessToken).json({accessToken});
 
   // res.status(200).json({ msg: "Login success" })
 });

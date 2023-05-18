@@ -1,8 +1,10 @@
 const router = require("express").Router();
-const verify = require('./verifyToken');
+// const verify = require('./verifyToken');
 
-router.get('/', verify, (req, res) => {
-    res.send(req.user);
+router.get('/', (req, res) => {
+    return res.status(200).json({message: `${req._id}`})
+
+
     
 })
 
