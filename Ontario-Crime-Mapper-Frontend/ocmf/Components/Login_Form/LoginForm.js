@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./LoginForm.module.css";
 import axios from "../../pages/api/axios";
+import loginImage from "../../public/loginImage.jpg"
+import Image from "next/image";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -8,6 +10,7 @@ export default function LoginForm() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const login_url = "/api/User/login";
+  const logout_url = "/api/logout";
 
   async function submit(e) {
     e.preventDefault();
@@ -16,7 +19,6 @@ export default function LoginForm() {
       password: password,
     };
     try {
-      // console.log(data);
       const response = await axios.post(
         login_url,
         {
@@ -27,57 +29,75 @@ export default function LoginForm() {
         },
         {
           headers: { "Content-Type": "application/json" },
-          withCredentials: true
+          withCredentials: true,
         }
       );
       console.log(response);
-      //   const accessToken = response?.data?.
       setEmail("");
       setPassword("");
       setLoggedIn(true);
     } catch (error) {
       console.log(error);
-      // if (error.response) {
-      //   //response status is an error code
-      //   console.log(error.response.status);
-      // } else if (error.request) {
-      //   //response not received though the request was sent
-      //   console.log(error.request);
-      // } else {
-      //   //an error occurred when setting up the request
-      //   console.log(error.message);
-      // }
-      // // console.log(error);
-      // setLoggedIn(false);
     }
   }
+
+  const logout = async (e) => {
+    try {
+      const response = await axios.get(
+        logout_url,
+        {},
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+          credentials: "include",
+          // path: COOKIE_PATH,
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
       {loggedIn ? (
-        <div>Login Successful</div>
+        <div>
+          Login Successful:{" "}
+          <button
+            onClick={(e) => {
+              logout(e);
+            }}
+          >
+            Logout
+          </button>
+        </div>
       ) : (
         <div className={styles.loginContainer}>
-          <div className={styles.imageDiv}>Image Div</div>
-          <div className={styles.formDiv}>
-            <form onSubmit={submit}>
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                required
-                autoComplete="off"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-              />
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
-              <button type="submit">Login In</button>
-            </form>
+          <div className={styles.loginDiv}>
+            <div className={styles.imageDiv}>
+              <Image className={styles.loginImage} src={loginImage} alt="Login Image" />
+            </div>
+            <div className={styles.formDiv}>
+              <h2>Login</h2>
+              <form className={styles.form} onSubmit={submit}>
+                <label htmlFor="email">Email:</label>
+                <input
+                  type="email"
+                  required
+                  autoComplete="off"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                />
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                />
+                <button type="submit">Login In</button>
+              </form>
+            </div>
           </div>
         </div>
       )}

@@ -6,11 +6,12 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require('cookie-parser');
 
 router.post("/register", async (req, res) => {
-  const resEmail = req.query.email;
-  const resPass = req.query.password;
+  const resEmail = req.body.params.email;
+  const resPass = req.body.params.password;
   //Validate Data
-  const { error } = registerValidation(req.body);
+  const { error } = registerValidation(req.body.params);
   if (error) {
+    console.log("fuk")
     return res.status(400).send(error.details[0].message);
   }
 
@@ -26,8 +27,8 @@ router.post("/register", async (req, res) => {
 
   //Create a New User
   const user = new User({
-    name: req.body.name,
-    email: req.body.email,
+    name: req.body.params.name,
+    email: req.body.params.email,
     password: hashedPassword,
   });
   try {
@@ -75,8 +76,8 @@ router.post("/login", async (req, res) => {
 
   res.cookie("refresh_jwt", refreshToken, {
     httpOnly: true,
-    // sameSite: "None",
-    // secure: true,
+    sameSite: "None",
+    secure: true,
     maxAge: 24 * 60 * 60 * 1000,
   });
 

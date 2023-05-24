@@ -13,9 +13,10 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+#__next {
+  height: 100vh;
 }
+
 
 @media (prefers-color-scheme: dark) {
   html {

@@ -1,0 +1,115 @@
+.loginContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: rgb(79, 76, 76);
+}
+
+
+.loginDiv {
+  background-color: black;
+  /* padding: 20px; */
+  display: flex;
+  /*justify-content: center;
+    align-items: center; */
+  width: 60%;
+  height: 70%;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.loginDiv > * {
+  width: 50%;
+}
+
+.registerIntro {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(102, 100, 100);
+  margin: 10px;
+  padding: 10px 10px 10px 30px;
+  border-radius: 10px;
+}
+
+.introTitle {
+  padding: 25px 0 50px 0;
+  font-size: 15px;
+}
+
+.introSlogan {
+    font-size: 40px;
+}
+
+.formDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow: scroll;
+  /* padding: 50px 50px; */
+}
+
+.formDiv > * {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.formDiv > h2 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.form {
+  padding: 30px 80px 50px 80px;
+}
+
+.form > input {
+  height: 25px;
+}
+
+.form > button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.form > button:hover {
+  cursor: pointer;
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offScreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
