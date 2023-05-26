@@ -73,3 +73,25 @@
 .form > button:hover {
     cursor: pointer;
 }
+
+.loginPageLinkDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    font-size: 14px;
+    gap: 4px;
+  }
+  
+  .loginPageLinkDiv > a {
+    text-decoration: underline;
+  }
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}

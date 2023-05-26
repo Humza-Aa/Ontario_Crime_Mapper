@@ -36,8 +36,11 @@
 .headerLinks > .loginBtn {
     font-size: 2rem;
     padding: 5px 25px 5px 25px;
+    background-color: rgb(101, 98, 98);
+    border-radius: 5px;
 }
 
 .headerLinks > .loginBtn:hover {
     cursor: pointer;
+    background-color:  rgb(116, 109, 109);
 }

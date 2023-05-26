@@ -6,10 +6,11 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require('cookie-parser');
 
 router.post("/register", async (req, res) => {
-  const resEmail = req.body.params.email;
-  const resPass = req.body.params.password;
+  console.log(req)
+  const resEmail = req.body.email;
+  const resPass = req.body.password;
   //Validate Data
-  const { error } = registerValidation(req.body.params);
+  const { error } = registerValidation(req.body);
   if (error) {
     console.log("fuk")
     return res.status(400).send(error.details[0].message);
@@ -27,8 +28,8 @@ router.post("/register", async (req, res) => {
 
   //Create a New User
   const user = new User({
-    name: req.body.params.name,
-    email: req.body.params.email,
+    name: req.body.name,
+    email: req.body.email,
     password: hashedPassword,
   });
   try {
@@ -40,10 +41,10 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const resEmail = req.body.params.email;
-  const resPass = req.body.params.password;
+  const resEmail = req.body.email;
+  const resPass = req.body.password;
   // console.log(req.query.email)
-  const { error } = loginValidation(req.body.params);
+  const { error } = loginValidation(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }

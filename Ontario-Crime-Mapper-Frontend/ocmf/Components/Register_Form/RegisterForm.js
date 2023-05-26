@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./RegisterForm.module.css";
-// import axios from "../../pages/api/axios";
+import axios from "../../api/axios";
 import {
   faCheck,
   faTimes,
@@ -63,8 +63,49 @@ export default function RegisterForm() {
     setErrorMsg("");
   }, [name, password, passwordMatch]);
 
-  const login_url = "/api/User/register";
-  const logout_url = "/api/logout";
+  useEffect(() => {
+    errorRef.current.focus();
+  }, [errorMsg]);
+
+  const register_url = "/api/User/register";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check whether Info passes tests again
+    const testuser = userTest.test(name);
+    const testpassword = passwordTest.test(password);
+
+    if (!testuser || !testpassword) {
+      setErrorMsg("Invalid Entry");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        register_url,
+        JSON.stringify({ name, email, password }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      setLoggedIn(true);
+      setEmail('');
+      setPassword('');
+      setpasswordMatch('')
+    } catch (error) {
+      if (!error?.response) {
+        setErrorMsg("No Server Response");
+      } else if (error.response?.status === 400) {
+        setErrorMsg("Email Already Taken");
+      } else {
+        setErrorMsg("Registration Failed");
+      }
+    }
+  };
 
   return (
     <>
@@ -84,14 +125,23 @@ export default function RegisterForm() {
           </div>
           <div className={styles.formDiv}>
             <h2>Register</h2>
-            <form className={styles.form}>
+            <section>
+              <p
+                ref={errorRef}
+                className={errorMsg ? styles.errmsg : styles.offScreen}
+                aria-live="assertive"
+              >
+                {errorMsg}
+              </p>
+            </section>
+            <form className={styles.form} onSubmit={handleSubmit}>
               <label htmlFor="name">
                 Name:
                 <span className={validName ? styles.valid : styles.hide}>
                   <FontAwesomeIcon icon={faCheck} />
                 </span>
                 <span
-                  className={validName || !name ? styles.hide : styles.valid}
+                  className={validName || !name ? styles.hide : styles.invalid}
                 >
                   <FontAwesomeIcon icon={faTimes} />
                 </span>
@@ -241,18 +291,31 @@ export default function RegisterForm() {
               />
               <p
                 id="confirmPass"
-                className={
+                className={`${
                   matchFocus && !validMatch
                     ? styles.instructions
                     : styles.offScreen
-                }
+                } pwdNoMath`}
               >
                 <FontAwesomeIcon icon={faInfoCircle} />
                 Passwords do not match
-
               </p>
-              <button type="submit">Login In</button>
+              <button
+                type="submit"
+                disabled={
+                  !validName || !validEmail || !validPassword || !validMatch
+                    ? true
+                    : false
+                }
+                className={styles.subBtn}
+              >
+                Register
+              </button>
             </form>
+            <div className={styles.loginPageLinkDiv}>
+              Already have an account?
+              <a href="/loginPage">Sign In</a>
+            </div>
           </div>
         </div>
       </div>
