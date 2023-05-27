@@ -1,7 +1,6 @@
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import axios from '../../api/axios';
-
+import axios from "../../api/axios";
 
 export default function homePage() {
   const logout_url = "/api/logout";
@@ -14,27 +13,23 @@ export default function homePage() {
 
   const logout = async (e) => {
     try {
-      const response = await axios.get(
-        logout_url,
-        {},
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-          credentials: "include",
-          // path: COOKIE_PATH,
-        }
-      );
+      const response = await axios.get(logout_url, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
     } catch (error) {
       console.log(error);
     }
+    router.push("http://localhost:3000/loginPage");
   };
 
   return (
     <>
       <div>homepage welcome</div>
-      <button onClick={logout}>
-        logout
-      </button>
+      <button onClick={logout}>logout</button>
     </>
   );
 }

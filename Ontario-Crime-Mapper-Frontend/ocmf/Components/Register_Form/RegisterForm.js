@@ -7,6 +7,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/navigation";
 
 const userTest = /^[a-zA-Z]{5,15}$/;
 const emailTest =
@@ -14,6 +15,8 @@ const emailTest =
 const passwordTest = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export default function RegisterForm() {
+  const router = useRouter();
+
   //Focus User on the required element/Error
   const userRef = useRef();
   const errorRef = useRef();
@@ -93,9 +96,11 @@ export default function RegisterForm() {
         }
       );
       setLoggedIn(true);
+      setName('')
       setEmail('');
       setPassword('');
       setpasswordMatch('')
+      router.push("http://localhost:3000/ProtectedRoutes/homePage");
     } catch (error) {
       if (!error?.response) {
         setErrorMsg("No Server Response");
