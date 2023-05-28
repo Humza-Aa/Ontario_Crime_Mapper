@@ -129,47 +129,52 @@ def ScraperMain():
 
 
 def sortData(scrapedTweet):
-    print("Sorting Scraped Data")
     # List: catagory (Missing...), Status(Update, Located)
     computedData = []
 
     for i in range(len(scrapedTweet)):
         dataObject = {}
-        # Getting Status:
-        dataObject["Status"] = scrapedTweet[i][0].splitlines()[0].split(":")[0]
-        # Getting Updates (?LOCATED)...
-        try:
-            dataObject["Updates"] = scrapedTweet[i][0].splitlines()[0].split(":")[1]
-        except IndexError:
-            dataObject["Updates"] = ""
-        # currentLocation could be the currentIdentity
-        currentLocation = scrapedTweet[i][0].splitlines()[1].split(", ")
-        # Checking whether we have a Location or an identity
-        if any(char.isdigit() for char in currentLocation):
-            dataObject["Name"] = currentLocation[0]
-            if currentLocation[1].isnumeric():
-                dataObject["Age"] = currentLocation[1]
-            else:
-                dataObject["Age"] = ""
-            description = scrapedTweet[i][0].splitlines()
-            del description[0:2]
-            #Extracting Location from Description
-            lists = scrapedTweet[i][0].splitlines()
-            del lists[0:2]
-            partOfDescription = lists[0] + " " + lists[1]
-            dataObject["Location"] = locationtagger.find_locations(text = partOfDescription).other
-        else:
+        if (scrapedTweet[i][0].find('\n') != -1):
+            # Getting Status:
+            dataObject["Status"] = scrapedTweet[i][0].splitlines()[0].split(":")[0]
+            # Getting Updates (?LOCATED)...
             try:
-                dataObject["Location"] = scrapedTweet[i][0].splitlines()[1]
+                dataObject["Updates"] = scrapedTweet[i][0].splitlines()[0].split(":")[1]
             except IndexError:
-                dataObject["Location"] = ""
-        
-            description = scrapedTweet[i][0].splitlines()
-            del description[0:1]
-        dataObject["TweetedTime"] = scrapedTweet[i][1]
-        dataObject["ImageUrl"] = scrapedTweet[i][2]
-        dataObject["Description"] = description
-        computedData.append(dataObject)
+                dataObject["Updates"] = ""
+            # currentLocation could be the currentIdentity
+            currentLocation = scrapedTweet[i][0].splitlines()[1].split(", ")
+            # Checking whether we have a Location or an identity
+            if any(char.isdigit() for char in currentLocation):
+                dataObject["Name"] = currentLocation[0]
+                if currentLocation[1].isnumeric():
+                    dataObject["Age"] = currentLocation[1]
+                else:
+                    dataObject["Age"] = ""
+                description = scrapedTweet[i][0].splitlines()
+                del description[0:2]
+                #Extracting Location from Description
+                lists = scrapedTweet[i][0].splitlines()
+                del lists[0:2]
+                try:
+                    partOfDescription = lists[0] + " " + lists[1]
+                except IndexError:
+                    partOfDescription = scrapedTweet[i][0]                   
+                dataObject["Location"] = locationtagger.find_locations(text = partOfDescription).other
+            else:
+                try:
+                    dataObject["Location"] = scrapedTweet[i][0].splitlines()[1]
+                except IndexError:
+                    dataObject["Location"] = ""
+            
+                description = scrapedTweet[i][0].splitlines()
+                del description[0:1]
+            dataObject["TweetedTime"] = scrapedTweet[i][1]
+            dataObject["ImageUrl"] = scrapedTweet[i][2]
+            dataObject["Description"] = description
+            computedData.append(dataObject)
+        else:
+            print("Tweet Skipped: ", scrapedTweet[i])
     print("Tweets Sorted")
     return(computedData)
         
