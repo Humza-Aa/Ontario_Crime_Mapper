@@ -1,4 +1,3 @@
-const { json } = require("express");
 
 const handleLogout = (req, res) => {
   // Check if token exists

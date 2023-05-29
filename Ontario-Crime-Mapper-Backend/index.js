@@ -16,6 +16,7 @@ const postRoute = require("./routes/post");
 const verifyJWT = require("./middleware/verifyJWT");
 const refresh = require("./routes/refresh");
 const logoutRoute = require("./routes/logoutRoute");
+const DataManageRoute = require("./routes/dataManageRoute");
 // const refreshTokenRoute = require("./routes/refreshToken");
 
 //connect to db
@@ -44,6 +45,7 @@ app.use("/api/logout", logoutRoute);
 //Verified Routes
 app.use(verifyJWT)
 app.use('/api/post', postRoute);
+app.use("/api/getTweets", DataManageRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
