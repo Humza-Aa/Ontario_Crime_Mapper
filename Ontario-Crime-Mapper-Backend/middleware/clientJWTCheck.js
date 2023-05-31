@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const verifyJWT = (req, res, next) => {
+const clientJWTChecker = (req, res) => {
   // Check if token exists
   // console.log(req.cookies.refresh_jwt)
   const Token = req.cookies.refresh_jwt;
@@ -13,8 +13,7 @@ const verifyJWT = (req, res, next) => {
         return res.status(401).json({ message: "Unauthorized" });
       } else {
         req._id = decoded._id;
-        // console.log(req._id);
-        next();
+        res.status(200).json({message: "allgood"})
       }
     });
   } else {
@@ -22,4 +21,4 @@ const verifyJWT = (req, res, next) => {
   }
 };
 
-module.exports = { verifyJWT };
+module.exports = clientJWTChecker;

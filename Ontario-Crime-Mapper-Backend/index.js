@@ -14,6 +14,7 @@ const cookieParser = require('cookie-parser');
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/post");
 const verifyJWT = require("./middleware/verifyJWT");
+const clientJWTCheck = require("./routes/verifyTokenRoute");
 const refresh = require("./routes/refresh");
 const logoutRoute = require("./routes/logoutRoute");
 const DataManageRoute = require("./routes/dataManageRoute");
@@ -41,9 +42,10 @@ app.use(cookieParser())
 app.use("/api/User", authRoute);
 app.use("/api/refresh", refresh);
 app.use("/api/logout", logoutRoute);
+app.use("/api/verifyToken", clientJWTCheck);
 
 //Verified Routes
-app.use(verifyJWT)
+app.use(verifyJWT.verifyJWT);
 app.use('/api/post', postRoute);
 app.use("/api/getTweets", DataManageRoute);
 

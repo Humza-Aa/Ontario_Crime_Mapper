@@ -4,7 +4,7 @@ const handleRefreshToken = (req, res) => {
   // Check if token exists
   if (req.cookies?.refresh_jwt) {
     // Get Token
-    const refreshToken = req.cookies.refresh_jwt;
+    const refreshToken = req.cookies?.refresh_jwt;
     // Verify Token
     jwt.verify(
       refreshToken,
