@@ -1,19 +1,32 @@
 import { useEffect, useState } from "react";
 import GetTweetData from "../../api/GetTweetData";
 
-export default function TweetsTable() {
-  const [tweets, setTweets] = useState([])
-  // const tweets = GetTweetData();
+// export async function getServerSideProps({ req }) {
+//   // const { token } = cookie.parse(req.headers.cookie.refresh_jwt)
+//   // console.log(req)
+  // const data = await GetTweetData(req);
+//   console.log(data)
 
-  useEffect(() => {
-    setTweets(GetTweetData());
-  }, [])
-  // console.log(tweets)
+//   return {
+//     props: { data },
+//   };
+// }
+
+export default function TweetsTable(tweets) {
+  // const [tweets, setTweets] = useState([]);
+  // // const tweets = GetTweetData();
+
+  // useEffect(() => {
+  //   setTweets(GetTweetData());
+  // }, []);
+  // useEffect(() => {
+  //   console.log(tweets);
+  // }, [tweets]);
 
   return (
     <>
       <div>
-        {/* <table>
+         {/* <table>
           <tr>
             <th>Status</th>
             <th>Updates</th>
@@ -22,7 +35,7 @@ export default function TweetsTable() {
             <th>Image Url</th>
             <th>Description</th>
           </tr>
-          {tweets.map((value, key) => {
+          {data.map((value, key) => {
             return (
               <tr key={key}>
                 <td>{value.Status}</td>
@@ -34,8 +47,8 @@ export default function TweetsTable() {
               </tr>
             );
           })}
-        </table> */}
-        {/* {tweets} */}
+        </table>
+        {tweets} */}
       </div>
     </>
   );

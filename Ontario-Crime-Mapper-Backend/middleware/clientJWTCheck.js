@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 
 const clientJWTChecker = (req, res) => {
   // Check if token exists
-  // console.log(req.cookies.refresh_jwt)
-  const Token = req.cookies.refresh_jwt;
+  // console.log(req.headers.cookies)
+  const Token = req.headers.cookies;
   if (Token) {
     // Get Token
     // const Tokensplit = Token.split(" ")[1];

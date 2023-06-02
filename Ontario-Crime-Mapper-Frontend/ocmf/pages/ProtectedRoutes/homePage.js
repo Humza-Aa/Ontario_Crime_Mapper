@@ -6,28 +6,51 @@ import TweetsTable from "../../Components/Tweets_Table/TweetsTable";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthProvider";
 import TokenVerification from "../../Components/TokenVerification";
+import GetTweetData from "../../api/GetTweetData";
 
 const MapWithNoSSR = dynamic(() => import("../../Components/Map/Map"), {
   ssr: false,
 });
 
-export default function homePage() {
+export async function getServerSideProps({ req }) {
+  // const { token } = cookie.parse(req.headers.cookie.refresh_jwt)
+  // console.log(req)
+  const data = await TokenVerification(req);
+  const tweets = await GetTweetData(req);
+  const tweet = tweets.data;
+
+  // console.log(tweets);
+  // does not allow access to page if not logged in
+  if (data != 200) {
+    return {
+      redirect: {
+        destination: "/loginPage",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { tweet },
+  };
+}
+
+export default function homePage({ tweet }) {
   const logout_url = "/api/logout";
   const router = useRouter();
-  const { auth, setAuth } = useContext(AuthContext);
-  const [validLogin, setValidLogin] = useState("");
+  console.log(tweet)
+  // const { auth, setAuth } = useContext(AuthContext);
+  // const [validLogin, setValidLogin] = useState("");
 
-  useEffect(() => {
-    TokenVerification().then((res) => {
-      setValidLogin(res);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getServerSideProps(auth);
+  // }, []);
 
-  useEffect(() => {
-    if (validLogin != 200) {
-      router.push("http://localhost:3000/loginPage");
-    }
-  }, [validLogin]);
+  // useEffect(() => {
+  //   if (validLogin != 200) {
+  //     router.push("http://localhost:3000/loginPage");
+  //   }
+  // }, [validLogin]);
 
   const logout = async (e) => {
     try {
@@ -50,7 +73,7 @@ export default function homePage() {
       <div>homepage welcome</div>
       <button onClick={logout}>logout</button>
       <MapWithNoSSR />
-      <TweetsTable />
+      <TweetsTable props={tweet}/>
     </>
   );
 }

@@ -3,7 +3,8 @@ const tweets = require("../model/Tweets");
 const getTweets = async (req, res) => {
   try {
     const tweetsData = await tweets.find({});
-    res.status(200).json(tweetsData);
+    // console.log(tweetsData[1])
+    res.status(200).send(tweetsData);
   } catch (error) {
     console.log(`error ${error}`);
   }

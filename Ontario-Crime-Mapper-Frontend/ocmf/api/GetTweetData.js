@@ -1,16 +1,18 @@
 import axios from "./axios";
 
-export default async function GetTweetData() {
+export default async function GetTweetData(req) {
   const getTweetsURL = "/api/getTweets"
-  // console.log(e);
+  // console.log(req);
+  const cookies = req.cookies.refresh_jwt;
+
   try {
     const response = await axios.get(
       getTweetsURL,
       {
         withCredentials: true,
-        // headers: {
-        //   Cookie: e
-        // }
+        headers: {
+          cookies: cookies,
+        }
       }
     );
     // console.log(response);
