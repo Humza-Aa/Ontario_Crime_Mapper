@@ -14,6 +14,7 @@ const verifyJWT = (req, res, next) => {
         return res.status(401).json({ message: "Unauthorized" });
       } else {
         req._id = decoded._id;
+        req.email = decoded.email;
         // console.log(req._id);
         next();
       }

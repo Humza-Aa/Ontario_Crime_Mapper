@@ -12,33 +12,29 @@ import GetTweetData from "../../api/GetTweetData";
 //   };
 // }
 
-export default function TweetsTable(tweets) {
-  // const [tweets, setTweets] = useState([]);
+export default function TweetsTable(tweet) {
+  // const [tweetsData, setTweetsData] = useState([]);
   // // const tweets = GetTweetData();
-
-  // useEffect(() => {
-  //   setTweets(GetTweetData());
-  // }, []);
-  // useEffect(() => {
-  // console.log(tweets.props);
-  // }, [tweets]);
+  // console.log(tweet[1])
 
   return (
     <>
       <div>
         <table>
-          <tr>
-            <th>Status</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Updates</th>
-            <th>Location</th>
-            <th>Tweeted Time</th>
-            <th>Image Url</th>
-            <th>Description</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Updates</th>
+              <th>Location</th>
+              <th>Tweeted Time</th>
+              <th>Image Url</th>
+              <th>Description</th>
+            </tr>
+          </thead>
           <tbody>
-            {tweets.props.map((value, key) => {
+            {tweet.props.map((value, key) => {
               return (
                 <tr key={key}>
                   <td>{value.Status}</td>

@@ -33,11 +33,16 @@
     text-align: center;
 }
 
+.headerLinks {
+    gap: 5px;
+}
+
 .headerLinks > .loginBtn {
-    font-size: 2rem;
-    padding: 5px 25px 5px 25px;
+    font-size: 1.5rem;
+    padding: 5px 20px 5px 20px;
     background-color: rgb(101, 98, 98);
     border-radius: 5px;
+
 }
 
 .headerLinks > .loginBtn:hover {

@@ -13,6 +13,7 @@ const clientJWTChecker = (req, res) => {
         return res.status(401).json({ message: "Unauthorized" });
       } else {
         req._id = decoded._id;
+        req.email = decoded.name;
         res.status(200).json({message: "allgood"})
       }
     });

@@ -7,18 +7,19 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthProvider";
 import TokenVerification from "../../Components/TokenVerification";
 import GetTweetData from "../../api/GetTweetData";
+import Header from "../../Components/Header/Header";
 
 const MapWithNoSSR = dynamic(() => import("../../Components/Map/Map"), {
   ssr: false,
 });
 
 export async function getServerSideProps({ req }) {
-  // const { token } = cookie.parse(req.headers.cookie.refresh_jwt)
-  // console.log(req)
+  // const [tweets, setTweets] = useState([])
+
   const data = await TokenVerification(req);
   const tweets = await GetTweetData(req);
 
-  // console.log(tweets);
+  // console.log(tweets.data[1]);
   // does not allow access to page if not logged in
   if (data != 200) {
     return {
@@ -40,11 +41,11 @@ export default function homePage({ tweet }) {
   const router = useRouter();
   // console.log(tweet);
   // const { auth, setAuth } = useContext(AuthContext);
-  // const [validLogin, setValidLogin] = useState("");
+  const [tweets, setTweets] = useState([]);
 
-  // useEffect(() => {
-  //   getServerSideProps(auth);
-  // }, []);
+  useEffect(() => {
+    setTweets(tweet)
+  }, []);
 
   // useEffect(() => {
   //   if (validLogin != 200) {
@@ -70,10 +71,10 @@ export default function homePage({ tweet }) {
 
   return (
     <>
-      <div>homepage welcome</div>
+      <div><Header/></div>
       <button onClick={logout}>logout</button>
-      <MapWithNoSSR />
-      <TweetsTable props={tweet} />
+      {/* <MapWithNoSSR />
+      <TweetsTable props={tweets} /> */}
     </>
   );
 }
