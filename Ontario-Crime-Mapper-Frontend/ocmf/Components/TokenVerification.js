@@ -19,7 +19,7 @@ export default async function TokenVerification(req) {
     // console.log(result.status);
     return result.status;
   } catch (err) {
-    console.log(`err: ${err}`);
+    console.log(`Token Error: ${err.response.data}`);
     return 401;
   }
 }

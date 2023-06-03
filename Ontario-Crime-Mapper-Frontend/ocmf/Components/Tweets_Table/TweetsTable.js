@@ -4,7 +4,7 @@ import GetTweetData from "../../api/GetTweetData";
 // export async function getServerSideProps({ req }) {
 //   // const { token } = cookie.parse(req.headers.cookie.refresh_jwt)
 //   // console.log(req)
-  // const data = await GetTweetData(req);
+// const data = await GetTweetData(req);
 //   console.log(data)
 
 //   return {
@@ -20,35 +20,40 @@ export default function TweetsTable(tweets) {
   //   setTweets(GetTweetData());
   // }, []);
   // useEffect(() => {
-  //   console.log(tweets);
+  // console.log(tweets.props);
   // }, [tweets]);
 
   return (
     <>
       <div>
-         {/* <table>
+        <table>
           <tr>
             <th>Status</th>
+            <th>Name</th>
+            <th>Age</th>
             <th>Updates</th>
             <th>Location</th>
             <th>Tweeted Time</th>
             <th>Image Url</th>
             <th>Description</th>
           </tr>
-          {data.map((value, key) => {
-            return (
-              <tr key={key}>
-                <td>{value.Status}</td>
-                <td>{value.Updates}</td>
-                <td>{value.Location}</td>
-                <td>{value.TweetedTime}</td>
-                <td>{value.ImageUrl}</td>
-                <td>{value.Description}</td>
-              </tr>
-            );
-          })}
+          <tbody>
+            {tweets.props.map((value, key) => {
+              return (
+                <tr key={key}>
+                  <td>{value.Status}</td>
+                  <td>{value.Name}</td>
+                  <td>{value.Age}</td>
+                  <td>{value.Updates}</td>
+                  <td>{value.Location}</td>
+                  <td>{value.TweetedTime}</td>
+                  <td>{value.ImageUrl}</td>
+                  <td>{value.Description}</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
-        {tweets} */}
       </div>
     </>
   );

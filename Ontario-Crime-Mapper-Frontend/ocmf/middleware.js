@@ -9,14 +9,14 @@ export default function middleware(req) {
   if (!token && url.includes("/ProtectedRoutes")) {
     return NextResponse.redirect("http://localhost:3000/loginPage");
   }
-  if (
-    token &&
-    (url === "http://localhost:3000/loginPage" ||
-      url === "http://localhost:3000/registerPage")
-  ) {
-    return NextResponse.redirect(
-      "http://localhost:3000/ProtectedRoutes/homePage"
-    );
-  }
+  // if (
+  //   token &&
+  //   (url === "http://localhost:3000/loginPage" ||
+  //     url === "http://localhost:3000/registerPage")
+  // ) {
+  //   return NextResponse.redirect(
+  //     "http://localhost:3000/ProtectedRoutes/homePage"
+  //   );
+  // }
 }
 //

@@ -17,7 +17,6 @@ export async function getServerSideProps({ req }) {
   // console.log(req)
   const data = await TokenVerification(req);
   const tweets = await GetTweetData(req);
-  const tweet = tweets.data;
 
   // console.log(tweets);
   // does not allow access to page if not logged in
@@ -29,6 +28,7 @@ export async function getServerSideProps({ req }) {
       },
     };
   }
+  const tweet = tweets.data;
 
   return {
     props: { tweet },
@@ -38,7 +38,7 @@ export async function getServerSideProps({ req }) {
 export default function homePage({ tweet }) {
   const logout_url = "/api/logout";
   const router = useRouter();
-  console.log(tweet)
+  // console.log(tweet);
   // const { auth, setAuth } = useContext(AuthContext);
   // const [validLogin, setValidLogin] = useState("");
 
@@ -73,7 +73,7 @@ export default function homePage({ tweet }) {
       <div>homepage welcome</div>
       <button onClick={logout}>logout</button>
       <MapWithNoSSR />
-      <TweetsTable props={tweet}/>
+      <TweetsTable props={tweet} />
     </>
   );
 }

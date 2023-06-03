@@ -18,6 +18,6 @@ export default async function GetTweetData(req) {
     // console.log(response);
     return response;
   } catch (err) {
-    console.log(err);
+    console.log(`Get Tweet Data: ${err.response.data}`);
   }
 }
