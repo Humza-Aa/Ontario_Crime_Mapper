@@ -14,7 +14,7 @@ export default function Map() {
   const center = [geoData.lat, geoData.lng];
 
   return (
-    <MapContainer center={center} zoom={12} style={{ height: '50vh', width:"50vw" }}>
+    <MapContainer center={center} zoom={12} style={{ height: '55vh', width:"100vw" }}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

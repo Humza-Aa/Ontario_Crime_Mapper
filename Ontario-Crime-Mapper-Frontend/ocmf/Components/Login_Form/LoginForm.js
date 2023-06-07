@@ -44,7 +44,7 @@ export default function LoginForm() {
           withCredentials: true,
         }
       );
-      console.log(response);
+      // console.log(response);
       const accessToken = response.data.accessToken;
       setAuth({ email, password, accessToken });
       router.push("http://localhost:3000/ProtectedRoutes/homePage");

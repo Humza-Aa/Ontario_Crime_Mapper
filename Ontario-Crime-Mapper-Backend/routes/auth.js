@@ -3,7 +3,7 @@ const User = require("../model/User");
 const { registerValidation, loginValidation } = require("./validation");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 
 router.post("/register", async (req, res) => {
   // console.log(req)
@@ -62,12 +62,16 @@ router.post("/login", async (req, res) => {
     return res.status(401).send({ msg: "Invalid credential" });
   }
 
-  const accessToken = jwt.sign({ _id: user._id }, process.env.TOKENPASSWORD, {
-    expiresIn: "5m",
-  });
+  const accessToken = jwt.sign(
+    { _id: user._id, email: user.email },
+    process.env.TOKENPASSWORD,
+    {
+      expiresIn: "5m",
+    }
+  );
 
   const refreshToken = jwt.sign(
-    { _id: user._id },
+    { _id: user._id, email: user.email, name: user.name },
     process.env.REFRESHTOKENPASSWORD,
     {
       expiresIn: "1d",
@@ -81,7 +85,14 @@ router.post("/login", async (req, res) => {
     maxAge: 24 * 60 * 60 * 1000,
   });
 
-  return res.header("auth-token", accessToken).json({accessToken});
+  // res.cookie("name", user.name, {
+  //   httpOnly: true,
+  //   sameSite: "None",
+  //   secure: true,
+  //   maxAge: 24 * 60 * 60 * 1000,
+  // });
+
+  return res.header("auth-token", accessToken).json({ accessToken });
 
   // res.status(200).json({ msg: "Login success" })
 });

@@ -10,6 +10,14 @@ const handleLogout = (req, res) => {
       credentials: "include",
       secure: true,
     }); // secure true
+
+    // res.clearCookie("name", {
+    //   httpOnly: true,
+    //   sameSite: "None",
+    //   withCredentials: true,
+    //   credentials: "include",
+    //   secure: true,
+    // }); // secure true
     res.status(200).json({ message: "Logout Success" });
   } else {
     res.status(204).json({ message: "Logout Success - No Content" });

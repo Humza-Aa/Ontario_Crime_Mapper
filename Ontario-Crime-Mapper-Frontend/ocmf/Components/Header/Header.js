@@ -1,13 +1,15 @@
 import styles from "./Header.module.css";
 import Link from "next/link";
+import logout from "../../api/logout";
+import { useRouter } from "next/navigation";
 import AuthContext from "../../context/AuthProvider";
-import { useContext } from 'react';
+import { useContext } from "react";
 
-export async function getServerSideProps({ req }) {
 
-}
-
-export default function Header() {
+export default function Header(username) {
+  // const logoutUser = logout;
+  const router = useRouter();
+  const { setAuth } = useContext(AuthContext);
 
   return (
     <>
@@ -25,7 +27,7 @@ export default function Header() {
           <div className={styles.headerLinks}>
             <h4>Another Link</h4>
           </div>
-          {true ? (
+          {!username.props ? (
             <div className={styles.headerLinks}>
               <Link className={styles.loginBtn} href="/loginPage">
                 <h6 className={styles.loginText}>Login</h6>{" "}
@@ -35,7 +37,11 @@ export default function Header() {
               </Link>
             </div>
           ) : (
-            <div>{auth.email}</div>
+            <div>
+              {" "}
+              <div>{username.props}</div>
+              <button onClick={() => logout(router, setAuth)}>logout</button>
+            </div>
           )}
         </nav>
       </div>

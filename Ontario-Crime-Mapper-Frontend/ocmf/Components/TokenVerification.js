@@ -16,8 +16,8 @@ export default async function TokenVerification(req) {
         },
       },
     );
-    // console.log(result.status);
-    return result.status;
+    // console.log(result);
+    return result;
   } catch (err) {
     console.log(`Token Error: ${err.response.data}`);
     return 401;

@@ -1,0 +1,25 @@
+.tableContainer{
+  width: 100vw;
+}
+
+.tableContainer > table {
+  max-width: 100%;
+}
+
+.headerRow{
+  background-color: rgb(94, 91, 91);
+}
+
+.tableRow {
+  width: 100%;
+  font-size: small;
+  height: 15px;
+}
+
+.tableRow > td {
+  text-align: center;
+}
+
+.descriptionTab {
+  /* font-size: 0.5rem; */
+}

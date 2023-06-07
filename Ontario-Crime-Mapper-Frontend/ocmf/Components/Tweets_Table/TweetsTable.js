@@ -1,28 +1,12 @@
-import { useEffect, useState } from "react";
-import GetTweetData from "../../api/GetTweetData";
-
-// export async function getServerSideProps({ req }) {
-//   // const { token } = cookie.parse(req.headers.cookie.refresh_jwt)
-//   // console.log(req)
-// const data = await GetTweetData(req);
-//   console.log(data)
-
-//   return {
-//     props: { data },
-//   };
-// }
+import styles from "./Tweets_Table.module.css";
 
 export default function TweetsTable(tweet) {
-  // const [tweetsData, setTweetsData] = useState([]);
-  // // const tweets = GetTweetData();
-  // console.log(tweet[1])
-
   return (
     <>
-      <div>
-        <table>
+      <div className={styles.tableContainer}>
+        <table className={styles.table}>
           <thead>
-            <tr>
+            <tr className={styles.headerRow}>
               <th>Status</th>
               <th>Name</th>
               <th>Age</th>
@@ -36,15 +20,15 @@ export default function TweetsTable(tweet) {
           <tbody>
             {tweet.props.map((value, key) => {
               return (
-                <tr key={key}>
-                  <td>{value.Status}</td>
-                  <td>{value.Name}</td>
-                  <td>{value.Age}</td>
-                  <td>{value.Updates}</td>
-                  <td>{value.Location}</td>
-                  <td>{value.TweetedTime}</td>
-                  <td>{value.ImageUrl}</td>
-                  <td>{value.Description}</td>
+                <tr className={styles.tableRow} key={key}>
+                  <td className={styles.statusTab}>{value.Status}</td>
+                  <td className={styles.nameTab}>{value.Name}</td>
+                  <td className={styles.ageTab}>{value.Age}</td>
+                  <td className={styles.updatesTab}>{value.Updates}</td>
+                  <td className={styles.locationTab}>{value.Location}</td>
+                  <td className={styles.tweetedTimeTab}>{value.TweetedTime}</td>
+                  <td className={styles.imageTab}>{value.ImageUrl}</td>
+                  <td className={styles.descriptionTab}>{value.Description}</td>
                 </tr>
               );
             })}
