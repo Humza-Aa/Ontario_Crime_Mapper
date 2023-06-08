@@ -50,9 +50,7 @@ export default function homePage({ data }) {
 
   return (
     <>
-      <div>
-        <Header props={data[1]} />
-      </div>
+      <Header props={data[1]} />
       <MapWithNoSSR />
       <TweetsTable props={tweets} />
     </>

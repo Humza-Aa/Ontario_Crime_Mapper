@@ -10,7 +10,9 @@ const tweetSchema = new mongoose.Schema({
     required: true,
   },
   Location: {
-    type: String || Array,
+    
+    type: [String, Array],
+
     required: true,
   },
   TweetedTime: {

@@ -1,25 +1,44 @@
 .tableContainer{
-  width: 100vw;
+  /* width: 100vw; */
+  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 50vh;
 }
 
 .tableContainer > table {
-  max-width: 100%;
+  width: auto;
+  border-collapse: collapse;
 }
 
 .headerRow{
-  background-color: rgb(94, 91, 91);
+  background-color: rgb(126, 114, 114);
+  
+}
+
+.headerRow > th {
+  background-color: rgb(126, 114, 114);
+  padding: 5px;
+  position: sticky;
+  top: 0;
 }
 
 .tableRow {
   width: 100%;
   font-size: small;
-  height: 15px;
 }
 
 .tableRow > td {
   text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid white;
+  /* width: fit-content; */
+  height: 0.5px;
 }
 
 .descriptionTab {
-  /* font-size: 0.5rem; */
+  overflow: hidden;
+  overflow-y: auto;
+  /* max-height: 0.5px; */
+  /* font-size: 2rem; */
 }
