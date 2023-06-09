@@ -10,10 +10,12 @@ const tweetSchema = new mongoose.Schema({
     required: true,
   },
   Location: {
-    
     type: [String, Array],
-
     required: true,
+  },
+  LocationGoeCode: {
+    type: Array
+    
   },
   TweetedTime: {
     type: String,
