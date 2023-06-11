@@ -5,10 +5,6 @@ import TokenVerification from "../../Components/TokenVerification";
 import GetTweetData from "../../api/GetTweetData";
 import Header from "../../Components/Header/Header";
 
-const MapWithNoSSR = dynamic(() => import("../../Components/Map/Map"), {
-  ssr: false,
-});
-
 export async function getServerSideProps({ req }) {
   // const [tweets, setTweets] = useState([])
 
@@ -42,6 +38,10 @@ export default function homePage({ data }) {
     setTweets(data[0]);
   }, []);
 
+  const MapWithNoSSR = dynamic(() => import("../../Components/Map/Map"), {
+    ssr: false,
+  });
+
   // useEffect(() => {
   //   if (validLogin != 200) {
   //     router.push("http://localhost:3000/loginPage");
@@ -51,7 +51,7 @@ export default function homePage({ data }) {
   return (
     <>
       <Header props={data[1]} />
-      <MapWithNoSSR />
+      <MapWithNoSSR props={tweets} />
       <TweetsTable props={tweets} />
     </>
   );

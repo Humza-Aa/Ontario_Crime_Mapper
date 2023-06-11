@@ -1,27 +1,111 @@
-import { useState, useEffect } from 'react';
-import '../../node_modules/leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { useState, useEffect } from "react";
+import "../../node_modules/leaflet/dist/leaflet.css";
+import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
+import IconMaker from "./Icon/Icons";
+// import {
+//   Person_Missing,
+//   Collision,
+//   Car_Jacking,
+//   Crowd_Control,
+//   Media_Advisory,
+//   Elopee,
+//   Fire,
+//   Firearm_Discharge,
+//   Hazard,
+// } from "./Icon/Icons";
 
 export function ChangeView({ coords }) {
   const map = useMap();
   map.setView(coords, 12);
   return null;
 }
+
+function StatusIcon(status) {
+  if (status.toLowerCase().includes("missing")) {
+    return IconMaker('Person_Missing');
+  } else if (status.toLowerCase().includes("collision")) {
+    return IconMaker('Collision');
+  } else if (status.toLowerCase().includes("carjacking")) {
+    return IconMaker('Car_Jacking');
+  } else if (status.toLowerCase().includes("crowd control")) {
+    return IconMaker('Crowd_Control');
+  } else if (status.toLowerCase().includes("media advisory")) {
+    return IconMaker('Media_Advisory');
+  } else if (status.toLowerCase().includes("elopee")) {
+    return IconMaker('Elopee');
+  } else if (status.toLowerCase().includes("fire")) {
+    return IconMaker('Fire');
+  } else if (status.toLowerCase().includes("firearm discharge")) {
+    return IconMaker('Firearm_Discharge');
+  } else if (status.toLowerCase().includes("hazard")) {
+    return IconMaker('Hazard');
+  } else if (status.toLowerCase().includes("industrial accident")) {
+    return IconMaker('Industrial_Accident');
+  } else if (status.toLowerCase().includes("person with a gun")) {
+    return IconMaker('Person_With_A_Gun');
+  } else if (status.toLowerCase().includes("road closures")) {
+    return IconMaker('Road_Closures');
+  } else if (status.toLowerCase().includes("shooting")) {
+    return IconMaker('Shooting');
+  } else if (status.toLowerCase().includes("sound of gunshot")) {
+    return IconMaker('Sound_Of_GunShot');
+  }
+  //  else if (status.toLowerCase().includes("sound of gunshot")) {
+    //   return IconMaker('Sound_Of_GunShot');
+    // } 
+  else if (status.toLowerCase().includes("sudden death")) {
+    return IconMaker('Sudden_Death');
+  }
+  else if (status.toLowerCase().includes("sudden death")) {
+    return IconMaker('Sudden_Death');
+  }
+  else if (status.toLowerCase().includes("suspicious incident")) {
+    return IconMaker('Suspicious_Incident');
+  }
+  else if (status.toLowerCase().includes("unknown trouble")) {
+    return IconMaker('Unknown_Trouble');
+  }
+  else if (status.toLowerCase().includes("update")) {
+    return IconMaker('Update');
+  }
+  else {
+    return IconMaker('Unknown');;
+  }
+}
+
 // https://stackblitz.com/@kboul
-export default function Map() {
+export default function Map(tweets) {
   const [geoData, setGeoData] = useState({ lat: 43.6532, lng: -79.3832 });
 
   const center = [geoData.lat, geoData.lng];
 
   return (
-    <MapContainer center={center} zoom={12} style={{ height: '55vh', width:"100%" }}>
+    <MapContainer
+      center={center}
+      zoom={4}
+      style={{ height: "55vh", width: "100%" }}
+    >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* {geoData.lat && geoData.lng && (
-        <Marker position={[geoData.lat, geoData.lng]} />
-      )} */}
+      {tweets.props.map((value, key) => {
+        if (value.LocationGoeCode.length != 0) {
+          return (
+            <Marker
+              position={[value.LocationGoeCode[0], value.LocationGoeCode[1]]}
+              icon={StatusIcon(value.Status)}
+              key={value._id}
+            >
+              <Popup>
+                {value.Status}
+                <br />
+                {value.Description}
+              </Popup>
+            </Marker>
+          );
+        }
+      })}
       <ChangeView coords={center} />
     </MapContainer>
   );
