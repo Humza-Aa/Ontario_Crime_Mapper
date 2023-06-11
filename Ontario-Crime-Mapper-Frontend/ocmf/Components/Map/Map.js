@@ -22,54 +22,49 @@ export function ChangeView({ coords }) {
 
 function StatusIcon(status) {
   if (status.toLowerCase().includes("missing")) {
-    return IconMaker('Person_Missing');
+    return IconMaker("Person_Missing");
   } else if (status.toLowerCase().includes("collision")) {
-    return IconMaker('Collision');
+    return IconMaker("Collision");
   } else if (status.toLowerCase().includes("carjacking")) {
-    return IconMaker('Car_Jacking');
+    return IconMaker("Car_Jacking");
   } else if (status.toLowerCase().includes("crowd control")) {
-    return IconMaker('Crowd_Control');
+    return IconMaker("Crowd_Control");
   } else if (status.toLowerCase().includes("media advisory")) {
-    return IconMaker('Media_Advisory');
+    return IconMaker("Media_Advisory");
   } else if (status.toLowerCase().includes("elopee")) {
-    return IconMaker('Elopee');
+    return IconMaker("Elopee");
   } else if (status.toLowerCase().includes("fire")) {
-    return IconMaker('Fire');
+    return IconMaker("Fire");
   } else if (status.toLowerCase().includes("firearm discharge")) {
-    return IconMaker('Firearm_Discharge');
+    return IconMaker("Firearm_Discharge");
   } else if (status.toLowerCase().includes("hazard")) {
-    return IconMaker('Hazard');
+    return IconMaker("Hazard");
   } else if (status.toLowerCase().includes("industrial accident")) {
-    return IconMaker('Industrial_Accident');
+    return IconMaker("Industrial_Accident");
   } else if (status.toLowerCase().includes("person with a gun")) {
-    return IconMaker('Person_With_A_Gun');
+    return IconMaker("Person_With_A_Gun");
   } else if (status.toLowerCase().includes("road closures")) {
-    return IconMaker('Road_Closures');
+    return IconMaker("Road_Closures");
   } else if (status.toLowerCase().includes("shooting")) {
-    return IconMaker('Shooting');
+    return IconMaker("Shooting");
   } else if (status.toLowerCase().includes("sound of gunshot")) {
-    return IconMaker('Sound_Of_GunShot');
+    return IconMaker("Sound_Of_GunShot");
   }
   //  else if (status.toLowerCase().includes("sound of gunshot")) {
-    //   return IconMaker('Sound_Of_GunShot');
-    // } 
+  //   return IconMaker('Sound_Of_GunShot');
+  // }
   else if (status.toLowerCase().includes("sudden death")) {
-    return IconMaker('Sudden_Death');
-  }
-  else if (status.toLowerCase().includes("sudden death")) {
-    return IconMaker('Sudden_Death');
-  }
-  else if (status.toLowerCase().includes("suspicious incident")) {
-    return IconMaker('Suspicious_Incident');
-  }
-  else if (status.toLowerCase().includes("unknown trouble")) {
-    return IconMaker('Unknown_Trouble');
-  }
-  else if (status.toLowerCase().includes("update")) {
-    return IconMaker('Update');
-  }
-  else {
-    return IconMaker('Unknown');;
+    return IconMaker("Sudden_Death");
+  } else if (status.toLowerCase().includes("sudden death")) {
+    return IconMaker("Sudden_Death");
+  } else if (status.toLowerCase().includes("suspicious incident")) {
+    return IconMaker("Suspicious_Incident");
+  } else if (status.toLowerCase().includes("unknown trouble")) {
+    return IconMaker("Unknown_Trouble");
+  } else if (status.toLowerCase().includes("update")) {
+    return IconMaker("Update");
+  } else {
+    return IconMaker("Unknown");
   }
 }
 
@@ -98,9 +93,42 @@ export default function Map(tweets) {
               key={value._id}
             >
               <Popup>
-                {value.Status}
+                <b>Situation:</b> {value.Status}
+                {value.Name && (
+                  <>
+                    <br />
+                    <b>Name: </b> {value.Name}
+                  </>
+                )}
+                {value.Age && (
+                  <>
+                    <br />
+                    <b>Age: </b> {value.Age}
+                  </>
+                )}
                 <br />
+                <b>Tweeted Time:</b> {value.TweetedTime}
+                <br />
+                <b>Description: </b>
                 {value.Description}
+                {value.ImageUrl && value.ImageUrl != 'No Image' && (
+                  <>
+                    <br />
+                    <b>Image: </b> <br />
+                    <img
+                      style={{
+                        width: "20em",
+                        height: "20em",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignContent: 'center',
+                        margin: '0'
+                      }}
+                      src={value.ImageUrl}
+                      alt="Person Image"
+                    />
+                  </>
+                )}
               </Popup>
             </Marker>
           );
