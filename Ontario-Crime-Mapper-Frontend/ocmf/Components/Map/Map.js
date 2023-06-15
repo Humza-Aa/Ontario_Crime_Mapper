@@ -2,25 +2,16 @@ import { useState, useEffect } from "react";
 import "../../node_modules/leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
 import IconMaker from "./Icon/Icons";
-// import {
-//   Person_Missing,
-//   Collision,
-//   Car_Jacking,
-//   Crowd_Control,
-//   Media_Advisory,
-//   Elopee,
-//   Fire,
-//   Firearm_Discharge,
-//   Hazard,
-// } from "./Icon/Icons";
 
 export function ChangeView({ coords }) {
   const map = useMap();
   map.setView(coords, 12);
   return null;
 }
-
+// let counter = 0;
 function StatusIcon(status) {
+  // counter = counter + 1;
+  // console.log(counter);
   if (status.toLowerCase().includes("missing")) {
     return IconMaker("Person_Missing");
   } else if (status.toLowerCase().includes("collision")) {
@@ -78,7 +69,7 @@ export default function Map(tweets) {
     <MapContainer
       center={center}
       zoom={4}
-      style={{ height: "55vh", width: "100%" }}
+      style={{ height: "55vh", width: "100%", zIndex: '0' }}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -111,7 +102,7 @@ export default function Map(tweets) {
                 <br />
                 <b>Description: </b>
                 {value.Description}
-                {value.ImageUrl && value.ImageUrl != 'No Image' && (
+                {value.ImageUrl && value.ImageUrl != "No Image" && (
                   <>
                     <br />
                     <b>Image: </b> <br />
@@ -121,8 +112,8 @@ export default function Map(tweets) {
                         height: "20em",
                         display: "flex",
                         justifyContent: "center",
-                        alignContent: 'center',
-                        margin: '0'
+                        alignContent: "center",
+                        margin: "0",
                       }}
                       src={value.ImageUrl}
                       alt="Person Image"
