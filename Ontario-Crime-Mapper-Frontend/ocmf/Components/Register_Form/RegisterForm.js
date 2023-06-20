@@ -117,14 +117,14 @@ export default function RegisterForm() {
       <div className={styles.loginContainer}>
         <div className={styles.loginDiv}>
           <div className={styles.registerIntro}>
-            <div className={styles.introTitle}>CRIMEPULSE</div>
+            <div className={styles.introTitle}>CRIMEVUE</div>
             <div className={styles.introSlogan}>
               Start finding crimes near you.
             </div>
             <div>
               <p>
                 Visualize crime. Map safety. Empower communities. Welcome to
-                CrimePulse.
+                CrimeVue.
               </p>
             </div>
           </div>

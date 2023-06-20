@@ -149,9 +149,20 @@
   margin-top: 10px;
 }
 
-/* .loginBtn {
-  padding: 10px;
-  font-size: 16px;
-  font-weight: bold;
-
-} */
+@media screen and (max-width: 1500px) {
+  .loginDiv {
+      width: 70vw;
+      min-width: 350px;
+      max-width: 600px;
+  }
+  .registerIntro {
+      display: none;
+      width: 0;
+  }
+  .formDiv {
+      width: 100%;
+  }
+  .form {
+      padding: 20px;
+  }
+}

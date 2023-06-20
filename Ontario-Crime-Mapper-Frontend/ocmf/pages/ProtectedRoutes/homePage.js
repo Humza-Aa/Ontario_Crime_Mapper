@@ -5,6 +5,7 @@ import TokenVerification from "../../Components/TokenVerification";
 import GetTweetData from "../../api/GetTweetData";
 import Header from "../../Components/Header/Header";
 
+
 export async function getServerSideProps({ req }) {
   // const [tweets, setTweets] = useState([])
 
@@ -30,8 +31,6 @@ export async function getServerSideProps({ req }) {
 }
 
 export default function homePage({ data }) {
-  // console.log(tweet);
-  // const { auth, setAuth } = useContext(AuthContext);
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
@@ -42,11 +41,6 @@ export default function homePage({ data }) {
     ssr: false,
   });
 
-  // useEffect(() => {
-  //   if (validLogin != 200) {
-  //     router.push("http://localhost:3000/loginPage");
-  //   }
-  // }, [validLogin]);
 
   return (
     <>

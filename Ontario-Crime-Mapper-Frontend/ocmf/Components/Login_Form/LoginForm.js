@@ -5,10 +5,13 @@ import axios from "../../api/axios";
 import loginImage from "../../public/loginImage.jpg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default function LoginForm() {
   const router = useRouter();
-  // const {auth, setAuth} = useContext(AuthContext) 
+  // const {auth, setAuth} = useContext(AuthContext)
 
   const { setAuth } = useContext(AuthContext);
 
@@ -64,7 +67,6 @@ export default function LoginForm() {
       }
       errorRef.current.focus();
     }
-   
   }
 
   return (
@@ -79,7 +81,19 @@ export default function LoginForm() {
             />
           </div>
           <div className={styles.formDiv}>
-            <h2>Login</h2>
+            <div className={styles.headerDiv}>
+              <div>
+                <Link href="/">
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faArrowLeft}
+                      style={{ color: "#ffffff" }}
+                    />
+                  </div>
+                </Link>
+              </div>
+              <h2>Login</h2>
+            </div>
             <section>
               <p
                 ref={errorRef}

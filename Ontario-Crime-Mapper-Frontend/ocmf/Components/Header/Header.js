@@ -3,7 +3,7 @@ import Link from "next/link";
 import logout from "../../api/logout";
 import { useRouter } from "next/navigation";
 import AuthContext from "../../context/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,14 +11,22 @@ export default function Header(username) {
   // const logoutUser = logout;
   const router = useRouter();
   const { setAuth } = useContext(AuthContext);
+  const [responsive, setResponsive] = useState(false);
 
   return (
     <>
       <div className={styles.HeaderContainer}>
         <div className={styles.headerName}>
-          <h1 className={styles.cName}>CRIMEPULSE</h1>
+          <h1 className={styles.cName}>CRIMEVUE</h1>
         </div>
-        <div className={styles.HeaderRightSide} id="HeaderRightSidediv">
+        <div
+          className={
+            responsive
+              ? `${styles.HeaderRightSide} ${styles.responsive}`
+              : styles.HeaderRightSide
+          }
+          id="HeaderRightSidediv"
+        >
           <nav className={styles.linksDiv}>
             <div className={styles.headerLinks}>
               <h4>
@@ -45,7 +53,7 @@ export default function Header(username) {
               </h4>
             </div>
             {!username.props ? (
-              <div className={styles.headerLinks}>
+              <div className={styles.headerButtons}>
                 <Link className={styles.loginBtn} href="/loginPage">
                   <h6 className={styles.loginText}>Login</h6>{" "}
                 </Link>
@@ -57,13 +65,18 @@ export default function Header(username) {
               <div className={styles.ProfileBtn}>
                 <div className={styles.ProfileBtkn}>
                   {username.props}
-                  {/* <FontAwesomeIcon icon={`${}`}/> */}
-                  <FontAwesomeIcon
-                    icon={faCaretDown}
-                    shake
-                    size="lg"
-                    style={{ color: "#ffffff" }}
-                  />
+                  <span
+                    style={
+                      responsive ? { display: "none" } : { display: "flex" }
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon={faCaretDown}
+                      shake
+                      size="lg"
+                      style={{ color: "#ffffff" }}
+                    />
+                  </span>
                 </div>
                 <div className={styles.profileSubNav}>
                   <button
@@ -85,12 +98,11 @@ export default function Header(username) {
           {/* <a href="" class="icon" onclick="myFunction()">&#9776;</a> */}
           <button
             className={styles.icon}
-            onClick={(e) => {
-              var x = document.getElementById("HeaderRightSidediv");
-              if (x.className === "HeaderRightSide") {
-                x.className += " responsive";
+            onClick={() => {
+              if (responsive == true) {
+                setResponsive(false);
               } else {
-                x.className = "HeaderRightSide";
+                setResponsive(true);
               }
             }}
           >

@@ -36,6 +36,7 @@
     border-radius: 10px;
 }
 
+
 .formDiv {
     display: flex;
     justify-content: center;
@@ -59,10 +60,13 @@
 
 .form {
     padding: 30px 80px 50px 80px;
+    
 }
 
 .form > input {
     height: 25px;
+    min-height: 25px;
+    min-width: 250px;
 } 
 
 .form > button {
@@ -72,6 +76,26 @@
 }
 .form > button:hover {
     cursor: pointer;
+}
+
+.headerDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.headerDiv > h2 {
+    width: 80%;
+    text-align: center;
+    padding-right: 50px;
+}
+
+.headerDiv div:first-child {
+    display: flex;
+    justify-content: flex-start;
+    width: 10%;
+    padding: 0 10px;
 }
 
 .loginPageLinkDiv {
@@ -94,4 +118,27 @@
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     text-align: center;
+}
+
+.offScreen {
+    display: none;
+}
+
+@media screen and (max-width: 1500px) {
+    .loginDiv {
+        width: 70vw;
+        min-width: 400px;
+        max-width: 600px;
+        /* max-width: ; */
+    }
+    .imageDiv {
+        display: none;
+        width: 0;
+    }
+    .formDiv {
+        width: 100%;
+    }
+    .form {
+        padding: 20px;
+    }
 }

@@ -45,14 +45,20 @@
   display: flex;
 }
 
-.headerLinks > .loginBtn {
+.HeaderRightSide .headerButtons {
+  min-width: 270px;
+  display: flex;
+  gap: 10px;
+}
+
+.headerButtons > .loginBtn {
   font-size: 1.5rem;
   padding: 5px 20px 5px 20px;
   background-color: rgb(101, 98, 98);
   border-radius: 5px;
 }
 
-.headerLinks > .loginBtn:hover {
+.headerButtons > .loginBtn:hover {
   cursor: pointer;
   background-color: rgb(116, 109, 109);
 }
@@ -112,9 +118,11 @@
 }
 
 @media screen and (max-width: 900px) {
-  .HeaderContainer .HeaderContainer:not(:first-child), .linksDiv {
+  .HeaderContainer .HeaderContainer:not(:first-child),
+  .linksDiv {
     display: none;
   }
+
   .HeaderContainer button.icon {
     float: right;
     display: block;
@@ -122,22 +130,31 @@
 }
 
 @media screen and (max-width: 900px) {
-  .HeaderRightSide.responsive {position: relative;}
-  .HeaderRightSide.responsive button.icon {
+  .responsive .linksDiv {
+    display: block;
+    z-index: 1;
     position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .HeaderRightSide.responsive .linksDiv {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .HeaderRightSide.responsive .ProfileBtn {float: none;}
-  .HeaderRightSide.responsive .profileSubNav {position: relative;}
-  .HeaderRightSide.responsive .profileSubNav .ProfileBtn {
-    display: block;
+    background-color: black;
+    top: 62px;
     width: 100%;
-    text-align: left;
   }
+  
+  .responsive .linksDiv .ProfileBtn .profileSubNav {
+    display: none;
+  }
+
+  .responsive .linksDiv .ProfileBtn .profileSubNav .logoutBtn {
+    height: 40px;
+    font-size: large;
+  }
+  
+  .responsive .linksDiv .ProfileBtn .profileSubNav {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+
 }
