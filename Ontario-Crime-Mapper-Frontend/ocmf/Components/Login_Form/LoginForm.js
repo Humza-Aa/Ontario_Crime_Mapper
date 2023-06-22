@@ -51,9 +51,8 @@ export default function LoginForm() {
       const accessToken = response.data.accessToken;
       setAuth({ email, password, accessToken });
       router.push("http://localhost:3000/ProtectedRoutes/homePage");
-      setEmail("");
-      setPassword("");
       setLoggedIn(true);
+
     } catch (error) {
       console.log(error);
       if (!error?.response) {
@@ -67,6 +66,8 @@ export default function LoginForm() {
       }
       errorRef.current.focus();
     }
+    setEmail("");
+    setPassword("");
   }
 
   return (

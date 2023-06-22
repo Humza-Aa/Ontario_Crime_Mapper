@@ -1,0 +1,24 @@
+.MapSection {
+  height: 90%;
+  background-color: transparent;
+  padding: 20px;
+}
+
+.Title {
+  text-align: center;
+}
+
+.Info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* width: 70%; */
+}
+
+.imageDiv {
+  width: 350px;
+  height: 350px;
+  position:relative;
+  border-radius: 30px;
+}
