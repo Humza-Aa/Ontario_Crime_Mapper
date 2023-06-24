@@ -59,9 +59,11 @@
   font-size: 2rem;
   font-weight: bold;
 }
-.accordionTitle {
-
+.accordionTitle:hover {
+  cursor: pointer;
 }
+
+
 
 .accordionDescrip {
   padding: 10px;

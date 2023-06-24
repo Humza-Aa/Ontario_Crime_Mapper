@@ -13,7 +13,6 @@ export default function Accordion({ title, description }) {
           {description}
         </div>
       )}
-      {/* <div className={styles.accordionDescrip}></div> */}
     </div>
   );
 }

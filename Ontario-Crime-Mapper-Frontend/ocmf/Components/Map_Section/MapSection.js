@@ -70,18 +70,6 @@ export default function MapSection() {
           {mapSection.map((info, key) => {
             return (
               <Accordion title={info.title} description={info.description} />
-
-              /*<div className={styles.Info} key={key}>
-              <div className={styles.MapInfo}>
-                <div>
-                  <h3>{info.title}</h3>
-                </div>
-                <div>{info.description}</div>
-              </div>
-              <div className={styles.imageDiv}>
-                <img src={info.image} alt={info.alternate} />
-              </div>
-            </div>*/
             );
           })}
         </div>

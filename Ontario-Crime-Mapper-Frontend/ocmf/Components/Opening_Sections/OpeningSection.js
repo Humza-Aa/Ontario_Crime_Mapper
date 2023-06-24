@@ -4,6 +4,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import App_Overview from "./App_Overview/App_Overview";
 import MapSection from "../Map_Section/MapSection";
+import TestimonialSection from "../Testimonials/TestimonialSection";
 
 export default function OpeningSection() {
   return (
@@ -33,7 +34,7 @@ export default function OpeningSection() {
       </div>
       <App_Overview />
       <MapSection />
-      <div>Testimonials</div>
+      <TestimonialSection />
       <div>Call to Action</div>
       <div>Footer</div>
     </>

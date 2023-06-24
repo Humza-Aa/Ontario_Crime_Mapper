@@ -1,0 +1,76 @@
+.TestimonialDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  padding: 10px;
+}
+
+.sectionTitle {
+  text-align: center;
+}
+
+.sectionTitle > h1 {
+  /* font: xx-large; */
+}
+
+.testWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: fit-content;
+}
+
+.testiDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* min-width: 150px; */
+  max-width: 450px;
+  height: fit-content;
+}
+
+.userquote {
+  background-color: rgb(110, 110, 110);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 110px;
+  text-align: center;
+}
+
+.arrowDown {
+  display: flex;
+  justify-content: center;
+  margin-top: -13px;
+  z-index: -1;
+}
+
+.userImageDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  color: rgb(110, 110, 110);
+} 
+
+.userImage {
+  /* background-color: rgba(240, 248, 255, 0); */
+  height: 100px;
+  width: 100px;
+  /* padding: 10px 0 0 0; */
+  background-color: #bbbbbb00;
+  border-radius: 50%;
+  display: inline-block;
+  background-image: url("../../public//Person.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.name {
+  text-align: center;
+}
