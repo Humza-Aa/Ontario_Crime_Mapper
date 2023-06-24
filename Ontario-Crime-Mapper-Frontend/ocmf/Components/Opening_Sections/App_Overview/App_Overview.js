@@ -55,14 +55,13 @@ export default function App_Overview() {
           </h1>
         </div>
         <div className={styles.featureDivsLayout}>
-          {featureList.map((feature) => {
-            let animate = feature.Animation;
+          {featureList.map((feature, key) => {
             return (
-              <div className={styles.FeatureDiv}>
+              <div className={styles.FeatureDiv} key={key}>
                 <div className={`${styles.FeatureDiv} ${styles.TitleDiv}`}>
                   <div className={`${styles.FeatureDiv} ${styles.Title}`}>
                     <div>
-                      <FontAwesomeIcon icon={feature.Icon} animate size="2xl" />
+                      <FontAwesomeIcon icon={feature.Icon} size="2xl" />
                     </div>
                     <h3 className={styles.FeatureTitle}>{feature.Title}</h3>
                   </div>
