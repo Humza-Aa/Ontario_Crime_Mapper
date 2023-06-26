@@ -1,4 +1,3 @@
-// import styles from "../styles/Home.module.css";
 import Header from "../Components/Header/Header";
 import OpeningSection from "../Components/Opening_Sections/OpeningSection";
 

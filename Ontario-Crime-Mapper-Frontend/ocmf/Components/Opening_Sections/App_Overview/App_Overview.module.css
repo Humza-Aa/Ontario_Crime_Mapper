@@ -10,6 +10,8 @@
 .Title {
   margin: 0;
   margin-bottom: 20px;
+  background-color: rgba(102, 122, 116, 0.463);
+  border-radius: 10px;
 }
 
 .featureDivsLayout {

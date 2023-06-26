@@ -30,15 +30,7 @@ export default function Header(username) {
           <nav className={styles.linksDiv}>
             <div className={styles.headerLinks}>
               <h4>
-                Another Link{" "}
-                <div style={{ textDecoration: "none", fontSize: "7px" }}>
-                  (Comming Soon)
-                </div>
-              </h4>
-            </div>
-            <div className={styles.headerLinks}>
-              <h4>
-                Report A Crime{" "}
+                Report a Crime{" "}
                 <div style={{ textDecoration: "none", fontSize: "7px" }}>
                   (Comming Soon)
                 </div>
@@ -47,6 +39,14 @@ export default function Header(username) {
             <div className={styles.headerLinks}>
               <h4>
                 Community{" "}
+                <div style={{ textDecoration: "none", fontSize: "7px" }}>
+                  (Comming Soon)
+                </div>
+              </h4>
+            </div>
+            <div className={styles.headerLinks}>
+              <h4>
+                About Us{" "}
                 <div style={{ textDecoration: "none", fontSize: "7px" }}>
                   (Comming Soon)
                 </div>
@@ -95,7 +95,6 @@ export default function Header(username) {
               </div>
             )}
           </nav>
-          {/* <a href="" class="icon" onclick="myFunction()">&#9776;</a> */}
           <button
             className={styles.icon}
             onClick={() => {

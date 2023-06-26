@@ -1,0 +1,42 @@
+.FooterDiv {
+  display: flex;
+  /* flex */
+  padding: 20px;
+  justify-content: center;
+  text-align: center;
+  border-top: 2px solid white;
+}
+
+.svgDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.Links {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 0  0 10px 0;
+}
+
+.Links > a {
+  text-decoration: underline;
+}
+.Links > a:hover {
+  cursor: pointer;
+  color: rgb(161, 161, 161);
+}
+
+.svg {
+  color: white;
+  fill: white;
+  width: 30px;
+  height: 30px;
+}
+
+.svg:hover {
+  cursor: pointer;
+  /* background-color: ; */
+}

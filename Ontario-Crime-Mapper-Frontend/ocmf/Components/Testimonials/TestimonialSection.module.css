@@ -1,17 +1,17 @@
-.TestimonialDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.TestimonialDiv { 
   height: fit-content;
-  padding: 10px;
+  padding: 30px 10px;
 }
 
 .sectionTitle {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(102, 122, 116, 0.534);
+  border-radius: 10px;
 }
 
 .sectionTitle > h1 {
-  /* font: xx-large; */
+  text-align: center;
 }
 
 .testWrapper {
@@ -21,6 +21,7 @@
   align-items: center;
   gap: 20px;
   height: fit-content;
+  padding: 10px;
 }
 
 .testiDiv {
@@ -65,7 +66,7 @@
   background-color: #bbbbbb00;
   border-radius: 50%;
   display: inline-block;
-  background-image: url("../../public//Person.jpg");
+  /* background-image: url("../../public//Person.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

@@ -69,7 +69,7 @@ export default function MapSection() {
         <div className={styles.AccordionDic}>
           {mapSection.map((info, key) => {
             return (
-              <Accordion title={info.title} description={info.description} />
+              <Accordion key={key} title={info.title} description={info.description} />
             );
           })}
         </div>

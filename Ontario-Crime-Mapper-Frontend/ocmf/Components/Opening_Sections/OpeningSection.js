@@ -2,11 +2,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./OpeningSection.module.css";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import App_Overview from "./App_Overview/App_Overview";
-import MapSection from "../Map_Section/MapSection";
-import TestimonialSection from "../Testimonials/TestimonialSection";
+import dynamic from "next/dynamic";
 
 export default function OpeningSection() {
+  const App_Overview = dynamic(() => import("./App_Overview/App_Overview"), {
+    ssr: false,
+  });
+  const MapSection = dynamic(() => import("../Map_Section/MapSection"), {
+    ssr: false,
+  });
+  const TestimonialSection = dynamic(
+    () => import("../Testimonials/TestimonialSection"),
+    {
+      ssr: false,
+    }
+    );
+  const Footer = dynamic(() => import("../Footer/Footer"), {
+    ssr: false,
+  });
+
   return (
     <>
       <div className={styles.Hero}>
@@ -23,8 +37,8 @@ export default function OpeningSection() {
                 </p>
                 <Link href="/loginPage">
                   {/* <button> */}
-                    Lets Get Started{" "}
-                    <FontAwesomeIcon icon={faArrowRight} bounce />
+                  Lets Get Started{" "}
+                  <FontAwesomeIcon icon={faArrowRight} bounce />
                   {/* </button> */}
                 </Link>
               </div>
@@ -35,8 +49,7 @@ export default function OpeningSection() {
       <App_Overview />
       <MapSection />
       <TestimonialSection />
-      <div>Call to Action</div>
-      <div>Footer</div>
+      <Footer />
     </>
   );
 }
