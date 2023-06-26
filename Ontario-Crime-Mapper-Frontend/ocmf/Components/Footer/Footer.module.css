@@ -38,5 +38,6 @@
 
 .svg:hover {
   cursor: pointer;
-  /* background-color: ; */
+  fill: rgb(161, 161, 161);
+  ;
 }
