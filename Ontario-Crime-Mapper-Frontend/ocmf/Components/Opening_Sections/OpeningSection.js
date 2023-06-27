@@ -16,14 +16,17 @@ export default function OpeningSection() {
     {
       ssr: false,
     }
-    );
+  );
   const Footer = dynamic(() => import("../Footer/Footer"), {
     ssr: false,
   });
 
   return (
     <>
-      <div className={styles.Hero}>
+      <div
+        className={styles.Hero}
+        style={{ backgroundImage: `url(/HeroSection.jpg)` }}
+      >
         <div className={styles.Blur}>
           <div className={styles.Content}>
             <div className={styles.headlineDiv}>
