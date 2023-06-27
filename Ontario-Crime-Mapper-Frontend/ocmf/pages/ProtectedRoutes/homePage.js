@@ -30,7 +30,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function homePage({ data }) {
+export default function HomePage({ data }) {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
