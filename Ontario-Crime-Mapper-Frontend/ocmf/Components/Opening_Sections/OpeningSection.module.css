@@ -3,7 +3,7 @@
 .Hero {
   height: 90%;
   background-color: transparent;
-  background-image: url("../../public/HeroSection.jpg");
+  background-image: url("/HeroSection.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
