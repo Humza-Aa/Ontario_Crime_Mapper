@@ -127,7 +127,7 @@ export default function LoginForm() {
             </form>
             <div className={styles.loginPageLinkDiv}>
               Need an account?
-              <a href="/registerPage">Sign up</a>
+              <Link href="/registerPage">Sign up</Link>
             </div>
           </div>
         </div>

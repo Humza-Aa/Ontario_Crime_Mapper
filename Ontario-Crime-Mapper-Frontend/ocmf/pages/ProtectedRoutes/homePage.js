@@ -35,7 +35,7 @@ export default function HomePage({ data }) {
 
   useEffect(() => {
     setTweets(data[0]);
-  }, []);
+  }, [data]);
 
   const MapWithNoSSR = dynamic(() => import("../../Components/Map/Map"), {
     ssr: false,

@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const userTest = /^[a-zA-Z]{5,15}$/;
 const emailTest =
@@ -319,7 +320,7 @@ export default function RegisterForm() {
             </form>
             <div className={styles.loginPageLinkDiv}>
               Already have an account?
-              <a href="/loginPage">Sign In</a>
+              <Link href="/loginPage">Sign In</Link>
             </div>
           </div>
         </div>
