@@ -1,6 +1,8 @@
 const allowedOrigins = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
+    'http://ontario-crime-mapper-humza-aa.vercel.app/',
+    'http://ontario-crime-mapper-git-main-humza-aa.vercel.app/',
+    'http://ontario-crime-mapper.vercel.app/',
+    'http://crimevue.vercel.app/'
 ];
 
 module.exports = allowedOrigins;
