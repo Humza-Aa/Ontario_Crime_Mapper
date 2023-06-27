@@ -7,16 +7,7 @@ export default function middleware(req) {
   const url = req.url;
   // console.log(`Result: ${result}`);
   if (!token && url.includes("/ProtectedRoutes")) {
-    return NextResponse.redirect("http://localhost:3000/loginPage");
+    return NextResponse.redirect(`${req.nextUrl.origin}/loginPage`);
   }
-  // if (
-  //   token &&
-  //   (url === "http://localhost:3000/loginPage" ||
-  //     url === "http://localhost:3000/registerPage")
-  // ) {
-  //   return NextResponse.redirect(
-  //     "http://localhost:3000/ProtectedRoutes/homePage"
-  //   );
-  // }
 }
-//
+

@@ -46,11 +46,12 @@ export default function LoginForm() {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
-      );
-      // console.log(response);
+        );
+        // console.log(response);
       const accessToken = response.data.accessToken;
+      // console.log(`hello ${window.location.protocol}`);
       setAuth({ email, password, accessToken });
-      router.push("http://localhost:3000/ProtectedRoutes/homePage");
+      router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
       setLoggedIn(true);
 
     } catch (error) {

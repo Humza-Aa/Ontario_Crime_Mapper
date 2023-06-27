@@ -75,7 +75,7 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     // Check whether Info passes tests again
     const testuser = userTest.test(name);
     const testpassword = passwordTest.test(password);
@@ -101,7 +101,7 @@ export default function RegisterForm() {
       setEmail('');
       setPassword('');
       setpasswordMatch('')
-      router.push("http://localhost:3000/ProtectedRoutes/homePage");
+      router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
     } catch (error) {
       if (!error?.response) {
         setErrorMsg("No Server Response");
