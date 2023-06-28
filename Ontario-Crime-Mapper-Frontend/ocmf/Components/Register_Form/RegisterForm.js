@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./RegisterForm.module.css";
-import axios from "../../api/axios";
+import axios from "../../lib/axios";
 import {
   faCheck,
   faTimes,

@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 import Link from "next/link";
-import logout from "../../api/logout";
+import logout from "../../lib/logout";
 import { useRouter } from "next/navigation";
 import AuthContext from "../../context/AuthProvider";
 import { useContext, useState } from "react";

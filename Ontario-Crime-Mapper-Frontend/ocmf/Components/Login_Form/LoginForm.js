@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 import styles from "./LoginForm.module.css";
-import axios from "../../api/axios";
+import axios from "../../lib/axios";
 import loginImage from "../../public/loginImage.jpg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

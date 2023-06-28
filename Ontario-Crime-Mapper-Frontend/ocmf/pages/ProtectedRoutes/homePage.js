@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 // import TweetsTable from "../../Components/Tweets_Table/TweetsTable";
 import { useEffect, useState } from "react";
 import TokenVerification from "../../Components/TokenVerification";
-import GetTweetData from "../../api/GetTweetData";
+import GetTweetData from "../../lib/GetTweetData";
 import Header from "../../Components/Header/Header";
 
 

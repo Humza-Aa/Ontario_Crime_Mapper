@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import axios from "../api/axios";
+import axios from "../lib/axios";
 
 export default async function TokenVerification(req) {
   //   console.log(`err: ${err}`);
