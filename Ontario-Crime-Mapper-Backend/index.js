@@ -38,7 +38,7 @@ mongoose.connection.on("error", (err) => {
 app.use(express.json());
 app.use(cookieParser())
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   res.send("Hello World!");
 });
 //Route Middleware
