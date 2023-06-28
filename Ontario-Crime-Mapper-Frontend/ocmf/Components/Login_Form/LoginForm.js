@@ -47,7 +47,7 @@ export default function LoginForm() {
           withCredentials: true,
         }
         );
-        // console.log(response);
+        console.log(response);
       const accessToken = response.data.accessToken;
       // console.log(`hello ${window.location.protocol}`);
       setAuth({ email, password, accessToken });
