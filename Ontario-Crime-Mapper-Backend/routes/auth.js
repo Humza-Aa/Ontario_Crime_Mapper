@@ -42,7 +42,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const resEmail = req.body.email;
   const resPass = req.body.password;
-  console.log(req.query.email)
+  console.log(req)
   const { error } = loginValidation(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
