@@ -77,7 +77,7 @@ router.post("/login", async (req, res) => {
       expiresIn: "1d",
     }
   );
-  console.log(assessToken, refreshToken);
+  console.log(accessToken, refreshToken);
 
   res.cookie("refresh_jwt", refreshToken, {
     httpOnly: true,
