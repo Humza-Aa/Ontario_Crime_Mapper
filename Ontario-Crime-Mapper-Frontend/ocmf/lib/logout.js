@@ -15,7 +15,7 @@ const logout = async (router, setAuth) => {
   } catch (error) {
     console.log(error);
   }
-  router.push("http://localhost:3000/loginPage");
+  router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
 };
 
 module.exports = logout;

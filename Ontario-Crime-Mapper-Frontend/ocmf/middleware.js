@@ -6,8 +6,8 @@ export default function middleware(req) {
   const token = req.cookies.get("refresh_jwt");
   const url = req.url;
   // console.log(`Result: ${req}`);
-  // if (!token && url.includes("/ProtectedRoutes")) {
-  //   return NextResponse.redirect(`${req.nextUrl.origin}/loginPage`);
-  // }
+  if (!token && url.includes("/ProtectedRoutes")) {
+    return NextResponse.redirect(`${req.nextUrl.origin}/loginPage`);
+  }
 }
 
