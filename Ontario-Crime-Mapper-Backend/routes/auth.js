@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
 
   res.cookie("refresh_jwt", refreshToken, {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "None",
     secure: true,
     maxAge: 24 * 60 * 60 * 1000,
   });
