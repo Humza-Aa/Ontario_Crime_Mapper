@@ -15,7 +15,7 @@ const logout = async (router, setAuth) => {
   } catch (error) {
     console.log(error);
   }
-  router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
+  router.push(`${window.location.origin}/loginPage`);
 };
 
 module.exports = logout;
