@@ -38,6 +38,9 @@ mongoose.connection.on("error", (err) => {
 app.use(express.json());
 app.use(cookieParser())
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 //Route Middleware
 app.use("/api/User", authRoute);
 app.use("/api/refresh", refresh);
@@ -49,9 +52,6 @@ app.use(verifyJWT.verifyJWT);
 app.use('/api/post', postRoute);
 app.use("/api/getTweets", DataManageRoute);
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is running on Port: ${process.env.PORT}`)

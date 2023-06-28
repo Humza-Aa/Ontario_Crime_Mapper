@@ -53,7 +53,8 @@ export default function LoginForm() {
       setAuth({ email, password, accessToken });
       router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
       setLoggedIn(true);
-
+      setEmail("");
+      setPassword("");
     } catch (error) {
       console.log(error);
       if (!error?.response) {
@@ -67,8 +68,7 @@ export default function LoginForm() {
       }
       errorRef.current.focus();
     }
-    setEmail("");
-    setPassword("");
+
   }
 
   return (
