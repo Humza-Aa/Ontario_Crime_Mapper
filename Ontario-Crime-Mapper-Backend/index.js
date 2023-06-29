@@ -39,6 +39,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://crimevue.vercel.app');
+  res.setHeader('Access-Control-Allow-Credentials', 'true'); // Allow sending cookies from frontend
+  next();
+});
+
+
 app.get("/home", (req, res) => {
   res.send("Hello World!");
 });
