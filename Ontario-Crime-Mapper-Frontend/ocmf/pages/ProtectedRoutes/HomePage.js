@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 // import TweetsTable from "../../Components/Tweets_Table/TweetsTable";
 import { useEffect, useState } from "react";
-import TokenVerification from "../Components/TokenVerification";
-import GetTweetData from "../lib/GetTweetData";
-import Header from "../Components/Header/Header";
+import TokenVerification from "../../Components/TokenVerification";
+import GetTweetData from "../../lib/GetTweetData";
+import Header from "../../Components/Header/Header";
 
 
 export async function getServerSideProps({ req }) {
@@ -37,11 +37,11 @@ export default function HomePage({ data }) {
     setTweets(data[0]);
   }, [data]);
 
-  const MapWithNoSSR = dynamic(() => import("../Components/Map/Map"), {
+  const MapWithNoSSR = dynamic(() => import("../../Components/Map/Map"), {
     ssr: false,
   });
   
-  const TweetsTable = dynamic(() => import("../Components/Tweets_Table/TweetsTable"), {
+  const TweetsTable = dynamic(() => import("../../Components/Tweets_Table/TweetsTable"), {
     ssr: false,
   });
 
