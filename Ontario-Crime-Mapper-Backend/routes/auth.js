@@ -83,7 +83,7 @@ router.post("/login", async (req, res) => {
     sameSite: "None",
     secure: true,
     maxAge: 24 * 60 * 60 * 1000,
-    domain: '.vercel.app',    
+    domain: 'crimevue.vercel.app',    
     path: '/',
     credentials: "include", 
   });

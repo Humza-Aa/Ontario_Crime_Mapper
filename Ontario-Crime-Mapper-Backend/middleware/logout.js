@@ -9,7 +9,7 @@ const handleLogout = (req, res) => {
       withCredentials: true,
       credentials: "include",
       secure: true,
-      domain: '.vercel.app',    
+      domain: 'crimevue.vercel.app',    
       path: '/', 
     }); // secure true
 
