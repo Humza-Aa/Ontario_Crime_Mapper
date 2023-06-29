@@ -83,8 +83,7 @@ router.post("/login", async (req, res) => {
     httpOnly: true,
     sameSite: "None",
     secure: true,
-    maxAge: 24 * 60 * 60 * 1000,
-    domain: 'vercel.app'
+    maxAge: 24 * 60 * 60 * 1000
   });
 
   // res.cookie("name", user.name, {
