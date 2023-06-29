@@ -9,7 +9,8 @@ const handleLogout = (req, res) => {
       withCredentials: true,
       credentials: "include",
       secure: true,
-      domain: '.vercel.app'
+      domain: '.vercel.app',    
+      path: '/', 
     }); // secure true
 
     // res.clearCookie("name", {

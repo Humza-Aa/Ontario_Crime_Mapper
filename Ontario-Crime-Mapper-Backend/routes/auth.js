@@ -77,25 +77,18 @@ router.post("/login", async (req, res) => {
       expiresIn: "1d",
     }
   );
-  console.log(accessToken, refreshToken);
 
   res.cookie("refresh_jwt", refreshToken, {
     httpOnly: true,
     sameSite: "None",
     secure: true,
-    maxAge: 24 * 60 * 60 * 1000
+    maxAge: 24 * 60 * 60 * 1000,
+    domain: '.vercel.app',    
+    path: '/',
+    credentials: "include", 
   });
 
-  // res.cookie("name", user.name, {
-  //   httpOnly: true,
-  //   sameSite: "None",
-  //   secure: true,
-  //   maxAge: 24 * 60 * 60 * 1000,
-  // });
-
   return res.header("auth-token", accessToken).json({ accessToken });
-
-  // res.status(200).json({ msg: "Login success" })
 });
 
 module.exports = router;

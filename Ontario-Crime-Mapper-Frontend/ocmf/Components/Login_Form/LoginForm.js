@@ -49,7 +49,9 @@ export default function LoginForm() {
         );
         console.log(response);
       const accessToken = response.data.accessToken;
-      // console.log(`hello ${window.location.protocol}`);
+
+      
+      
       setAuth({ email, password, accessToken });
       router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
       setLoggedIn(true);
