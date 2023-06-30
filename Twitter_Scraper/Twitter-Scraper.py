@@ -1,18 +1,19 @@
-# from getpass import getpass
+import locationtagger
+import nltk
+from pymongo import MongoClient
+from getpass import getpass
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+from geopy.extra.rate_limiter import RateLimiter
+from geopy.geocoders import Nominatim
 import os
 # from collections import Counter
 from dotenv import load_dotenv
 load_dotenv()
 
-from pymongo import MongoClient
-import os
-
-import nltk
 
 # essential entity models downloads
 nltk.downloader.download('maxent_ne_chunker')
@@ -21,8 +22,6 @@ nltk.downloader.download('treebank')
 nltk.downloader.download('maxent_treebank_pos_tagger')
 nltk.downloader.download('punkt')
 nltk.download('averaged_perceptron_tagger')
-
-import locationtagger
 
 
 
@@ -102,7 +101,7 @@ def ScraperMain():
                     tweetIds.add(tweet)
                     currentTweetInfo.append(tweetId)
                     tweetData.append(currentTweetInfo)
-                    if "2023-04-15" in currentTweetInfo[1]:
+                    if "2023-05-25" in currentTweetInfo[1]:
                         maxDate = True
                         break
 
@@ -131,7 +130,7 @@ def ScraperMain():
 def sortData(scrapedTweet):
     # List: catagory (Missing...), Status(Update, Located)
     computedData = []
-
+    counter = 0
     for i in range(len(scrapedTweet)):
         dataObject = {}
         if (scrapedTweet[i][0].find('\n') != -1):
@@ -166,13 +165,37 @@ def sortData(scrapedTweet):
                     dataObject["Location"] = scrapedTweet[i][0].splitlines()[1]
                 except IndexError:
                     dataObject["Location"] = ""
-            
                 description = scrapedTweet[i][0].splitlines()
                 del description[0:1]
+            if dataObject["Location"] is not None:
+                locationcheck = dataObject["Location"]
+                if type(dataObject["Location"]) == list and bool(dataObject["Location"]):
+                    res = max(locationcheck, key = len)
+                    locationcheck = res
+                if "and" in locationcheck:
+                    locationcheck = locationcheck.replace("and", "")
+                if "&" in locationcheck:
+                    locationcheck = locationcheck.replace("&", "")
+                geolocator = Nominatim(user_agent="Twitter_Scraper")
+                geocode = lambda query: geolocator.geocode("%s, Toronto ON" % query)
+                geocode2 = RateLimiter(geocode, min_delay_seconds=2)
+                locationcor = geocode2(locationcheck)
+                if locationcor is not None:
+                    locationcor2 = [locationcor.latitude, locationcor.longitude]
+                    dataObject["LocationGoeCode"] = locationcor2
+                else:
+                    dataObject["LocationGoeCode"] = []
+                    
+            else:
+                dataObject["LocationGoeCode"] = ["No Location Provided"]
             dataObject["TweetedTime"] = scrapedTweet[i][1]
             dataObject["ImageUrl"] = scrapedTweet[i][2]
             dataObject["Description"] = description
             computedData.append(dataObject)
+            counter = counter + 1
+            print(counter)
+            print(dataObject['Location'])
+            print(dataObject['LocationGoeCode'])
         else:
             print("Tweet Skipped: ", scrapedTweet[i])
     print("Tweets Sorted")
