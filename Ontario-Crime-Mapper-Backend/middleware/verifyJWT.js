@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const verifyJWT = (req, res, next) => {
   // Check if token exists
-  // console.log(req.cookies.refresh_jwt)
+  // console.log(req)
   const Token = req.cookies.refresh_jwt || req.headers.cookies;
   // console.log(Token);
   if (Token) {

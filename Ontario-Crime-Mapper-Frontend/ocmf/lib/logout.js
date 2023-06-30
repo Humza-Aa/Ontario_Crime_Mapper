@@ -1,4 +1,5 @@
 import axios from "./axios";
+import cookie from "js-cookie";
 
 
 const logout = async (router, setAuth) => {
@@ -11,6 +12,7 @@ const logout = async (router, setAuth) => {
       },
       credentials: "include",
     });
+    cookie.remove("refresh_jwt");
     setAuth({});
   } catch (error) {
     console.log(error);

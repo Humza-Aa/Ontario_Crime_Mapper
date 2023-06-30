@@ -9,8 +9,6 @@ const handleLogout = (req, res) => {
       withCredentials: true,
       credentials: "include",
       secure: true,
-      domain: 'crimevue.vercel.app',    
-      path: '/', 
     }); // secure true
 
     // res.clearCookie("name", {

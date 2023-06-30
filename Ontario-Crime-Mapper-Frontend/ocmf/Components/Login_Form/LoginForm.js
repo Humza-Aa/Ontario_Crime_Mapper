@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import cookie from "js-cookie";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -47,16 +48,14 @@ export default function LoginForm() {
           withCredentials: true,
         }
         );
-        console.log(response);
+        // console.log(response.data.refreshToken);
       const accessToken = response.data.accessToken;
-
-      
-      
+      cookie.set("refresh_jwt", response.data.refreshToken, {expires: 24})
       setAuth({ email, password, accessToken });
       router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
       setLoggedIn(true);
-      setEmail("");
-      setPassword("");
+      // setEmail("");
+      // setPassword("");
     } catch (error) {
       console.log(error);
       if (!error?.response) {

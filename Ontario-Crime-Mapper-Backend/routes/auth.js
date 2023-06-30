@@ -40,10 +40,11 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log(req)
   const resEmail = req.body.email;
   const resPass = req.body.password;
-  console.log(req);
   const { error } = loginValidation(req.body);
+  console.log(error);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
@@ -83,12 +84,12 @@ router.post("/login", async (req, res) => {
     sameSite: "None",
     secure: true,
     maxAge: 24 * 60 * 60 * 1000,
-    domain: 'crimevue.vercel.app',    
-    path: '/',
-    credentials: "include", 
+    credentials: "include",
   });
 
-  return res.header("auth-token", accessToken).json({ accessToken });
+  return res
+    .header("auth-token", accessToken)
+    .json({ accessToken, refreshToken });
 });
 
 module.exports = router;
