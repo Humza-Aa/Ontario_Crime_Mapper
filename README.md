@@ -43,14 +43,14 @@ Crime Mapper utilizes different markers on the map to represent various types of
 - **Media Advisory** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Media_Advisory.svg" alt="Media Advisory Icon" width="24" style="fill: white">
 - **Person Missing** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Person_Missing.svg" alt="Person Missing Icon" width="24" style="fill: white">
 - **Person With a Gun** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Person_With_A_Gun.svg" alt="Person With a Gun Icon" width="24" style="fill: white">
-- **Road Closures** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Road_Closures.svg" alt="Other Icon" width="24" style="fill: white">
-- **Shooting** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Shooting.svg" alt="Other Icon" width="24" style="fill: white">
-- **Sound Of Gunshots** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Sound_Of_GunShot.svg" alt="Other Icon" width="24" style="fill: white">
-- **Sudden Death** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Sudden_Death.svg" alt="Other Icon" width="24" style="fill: white">
-- **Suspicious Incident** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Suspicious_Incident.svg" alt="Other Icon" width="24" style="fill: white">
-- **Unknown Trouble** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Unknown_Trouble.svg" alt="Other Icon" width="24" style="fill: white">
-- **Unknown** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Unknown.svg" alt="Other Icon" width="24" style="fill: white">
-- **Updates** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Update.svg" alt="Other Icon" width="24" style="fill: white">
+- **Road Closures** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Road_Closures.svg" alt="Road Closures Icon" width="24" style="fill: white">
+- **Shooting** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Shooting.svg" alt="Shooting Icon" width="24" style="fill: white">
+- **Sound Of Gunshots** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Sound_Of_GunShot.svg" alt="Sound Of Gunshots Icon" width="24" style="fill: white">
+- **Sudden Death** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Sudden_Death.svg" alt="Sudden Death Icon" width="24" style="fill: white">
+- **Suspicious Incident** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Suspicious_Incident.svg" alt="Suspicious Incident Icon" width="24" style="fill: white">
+- **Unknown Trouble** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Unknown_Trouble.svg" alt="Unknown Trouble Icon" width="24" style="fill: white">
+- **Unknown** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Unknown.svg" alt="Unknown Icon" width="24" style="fill: white">
+- **Updates** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Update.svg" alt="Updates Icon" width="24" style="fill: white">
 
 ## Installation
 
@@ -82,7 +82,7 @@ npm install
 
 8. Create a `.env` file in the `Ontario-Crime-Mapper-Backend` directory and provide the following environment variables:
 
-PORT=3001
+PORT=4000
 MONGODB_LINK=your-mongodb-connection-string
 MONGODB_USER=your-mongodb-username
 MONGODB_PASS=your-mongodb-password
