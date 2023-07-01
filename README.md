@@ -82,12 +82,12 @@ npm install
 
 8. Create a `.env` file in the `Ontario-Crime-Mapper-Backend` directory and provide the following environment variables:
 
-PORT=4000
-MONGODB_LINK=your-mongodb-connection-string
-MONGODB_USER=your-mongodb-username
-MONGODB_PASS=your-mongodb-password
-TOKENPASSWORD=your-access-token-password
-REFRESHTOKENPASSWORD=your-refresh-token-password
+PORT=4000 <br/>
+MONGODB_LINK=your-mongodb-connection-string <br/>
+MONGODB_USER=your-mongodb-username <br/>
+MONGODB_PASS=your-mongodb-password <br/>
+TOKENPASSWORD=your-access-token-password <br/>
+REFRESHTOKENPASSWORD=your-refresh-token-password <br/>
 
 9. Start the backend server:
 
@@ -108,10 +108,10 @@ pip install -r requirements.txt
 
 13. Create a `.env` file in the `Twitter_Scraper` directory and provide the following environment variables:
 
-MONGODB_USER=your-mongodb-username
-MONGODB_PASS=your-mongodb-password
-TW_USERNAME=your-twitter-username
-TW_PASSWORD=your-twitter-password  
+MONGODB_USER=your-mongodb-username <br/>
+MONGODB_PASS=your-mongodb-password <br/>
+TW_USERNAME=your-twitter-username <br/>
+TW_PASSWORD=your-twitter-password <br/>
 
 Please note that you need to use the same MongoDB cluster credentials (`MONGODB_USER` and `MONGODB_PASS`) for both the backend and the Twitter scraper.
 
