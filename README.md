@@ -1,7 +1,7 @@
 <h1 align="center">Ontario Crime Mapper</h1>
 
 <p align="center">
-  <img src="path/to/project-logo.png" alt="Project Logo" width="200">
+  <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Logo.png" alt="Project Logo" width="200">
 </p>
 
 Crime Mapper is a powerful web application that enables users to visualize and analyze real-time crime data. By scraping crime-related information from Twitter, the app provides an interactive map interface where users can explore crime incidents, access detailed crime information, and contribute to community safety efforts.
