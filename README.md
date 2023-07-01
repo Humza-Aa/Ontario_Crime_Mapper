@@ -31,25 +31,25 @@ Crime Mapper is a powerful web application that enables users to visualize and a
 
 Crime Mapper utilizes different markers on the map to represent various types of crimes. Each marker is associated with a unique image icon, making it easy for users to identify the crime category at a glance. Here are the marker categories and their respective images:
 
-- **Car Jacking** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Car_Jacking.svg" alt="Theft Icon" width="24" style="fill: white">
-- **Collision** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Collision.svg" alt="Assault Icon" width="24" style="fill: white">
-- **Crowd Control** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Crowd_Control.svg" alt="Burglary Icon" width="24" style="fill: white">
-- **Elopee** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Elopee.svg" alt="Robbery Icon" width="24" style="fill: white">
-- **Fire** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Fire.svg" alt="Vandalism Icon" width="24" style="fill: white">
-- **Firearm Discharge** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Firearm_Discharge.svg" alt="Drug-related Icon" width="24" style="fill: white">
-- **Hazard** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Hazard.svg" alt="Other Icon" width="24" style="fill: white">
-- **Industrial Accident** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Industrial_Accident.svg" alt="Other Icon" width="24" style="fill: white">
-- **Media Advisory** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Media_Advisory.svg" alt="Other Icon" width="24" style="fill: white">
-- **Person Missing** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Person_Missing.svg" alt="Other Icon" width="24" style="fill: white">
-- **Person With a Gun** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Person_With_A_Gun.svg" alt="Other Icon" width="24" style="fill: white">
-- **Road Closures** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Road_Closures.svg" alt="Other Icon" width="24" style="fill: white">
-- **Shooting** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Shooting.svg" alt="Other Icon" width="24" style="fill: white">
-- **Sound Of Gunshots** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Sound_Of_GunShot.svg" alt="Other Icon" width="24" style="fill: white">
-- **Sudden Death** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Sudden_Death.svg" alt="Other Icon" width="24" style="fill: white">
-- **Suspicious Incident** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Suspicious_Incident.svg" alt="Other Icon" width="24" style="fill: white">
-- **Unknown Trouble** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Unknown_Trouble.svg" alt="Other Icon" width="24" style="fill: white">
-- **Unknown** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Unknown.svg" alt="Other Icon" width="24" style="fill: white">
-- **Updates** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/Update.svg" alt="Other Icon" width="24" style="fill: white">
+- **Car Jacking** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Car_Jacking.svg" alt="Theft Icon" width="24" style="fill: white">
+- **Collision** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Collision.svg" alt="Assault Icon" width="24" style="fill: white">
+- **Crowd Control** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Crowd_Control.svg" alt="Burglary Icon" width="24" style="fill: white">
+- **Elopee** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Elopee.svg" alt="Robbery Icon" width="24" style="fill: white">
+- **Fire** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Fire.svg" alt="Vandalism Icon" width="24" style="fill: white">
+- **Firearm Discharge** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Firearm_Discharge.svg" alt="Drug-related Icon" width="24" style="fill: white">
+- **Hazard** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Hazard.svg" alt="Other Icon" width="24" style="fill: white">
+- **Industrial Accident** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Industrial_Accident.svg" alt="Other Icon" width="24" style="fill: white">
+- **Media Advisory** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Media_Advisory.svg" alt="Other Icon" width="24" style="fill: white">
+- **Person Missing** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Person_Missing.svg" alt="Other Icon" width="24" style="fill: white">
+- **Person With a Gun** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Person_With_A_Gun.svg" alt="Other Icon" width="24" style="fill: white">
+- **Road Closures** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Road_Closures.svg" alt="Other Icon" width="24" style="fill: white">
+- **Shooting** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Shooting.svg" alt="Other Icon" width="24" style="fill: white">
+- **Sound Of Gunshots** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Sound_Of_GunShot.svg" alt="Other Icon" width="24" style="fill: white">
+- **Sudden Death** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Sudden_Death.svg" alt="Other Icon" width="24" style="fill: white">
+- **Suspicious Incident** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Suspicious_Incident.svg" alt="Other Icon" width="24" style="fill: white">
+- **Unknown Trouble** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Unknown_Trouble.svg" alt="Other Icon" width="24" style="fill: white">
+- **Unknown** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Unknown.svg" alt="Other Icon" width="24" style="fill: white">
+- **Updates** <img src="/Ontario-Crime-Mapper-Frontend/ocmf/public/Icon_Images/ReadMe/Update.svg" alt="Other Icon" width="24" style="fill: white">
 
 ## Installation
 
