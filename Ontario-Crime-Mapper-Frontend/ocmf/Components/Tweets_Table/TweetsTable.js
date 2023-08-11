@@ -31,34 +31,41 @@ export default function TweetsTable(tweet) {
           <tbody>
             {tweet.props.map((value, key) => {
               return (
-                 <>
-                  {!value.Updates ? (<tr className={styles.tableRow} key={key}>
-                  <td className={styles.statusTab}>{value.Status}</td>
-                  <td className={styles.nameTab}>
-                    {value.ImageUrl != "No Image" ? (
-                      <>
-                        <td>
-                          <img
-                            className={styles.susImage}
-                            src={value.ImageUrl}
-                            alt=""
-                          />
-                        </td>
-                      </>
-                    ) : (
-                      ""
-                    )}
+                <>
+                  {!value.Updates ? (
+                    <tr className={styles.tableRow} key={key}>
+                      <td className={styles.statusTab}>{value.Status}</td>
+                      <td className={styles.nameTab}>
+                        {value.ImageUrl != "No Image" ? (
+                          <>
+                            <td>
+                              <img
+                                className={styles.susImage}
+                                src={value.ImageUrl}
+                                alt=""
+                              />
+                            </td>
+                          </>
+                        ) : (
+                          ""
+                        )}
 
-                    <td>
-                      <b>Name:</b> {value.Name ? value.Name : "Unknown"} <br />{" "}
-                      <b>Age:</b> {value.Age ? value.Age : "Unknown"} <br />
-                      <b>Location:</b> {LocationCheck(value.Location)}
-                    </td>
-                  </td>
-                  {/* <td className={styles.updatesTab}>{value.Updates}</td> */}
-                  <td className={styles.tweetedTimeTab}>{value.TweetedTime}</td>
-                  <td className={styles.descriptionTab}>{value.Description}</td>
-                  </tr>) : null}
+                        <td>
+                          <b>Name:</b> {value.Name ? value.Name : "Unknown"}{" "}
+                          <br /> <b>Age:</b> {value.Age ? value.Age : "Unknown"}{" "}
+                          <br />
+                          <b>Location:</b> {LocationCheck(value.Location)}
+                        </td>
+                      </td>
+                      {/* <td className={styles.updatesTab}>{value.Updates}</td> */}
+                      <td className={styles.tweetedTimeTab}>
+                        {value.TweetedTime}
+                      </td>
+                      <td className={styles.descriptionTab}>
+                        {value.Description}
+                      </td>
+                    </tr>
+                  ) : null}
                 </>
               );
             })}
