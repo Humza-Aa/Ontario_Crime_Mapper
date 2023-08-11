@@ -69,7 +69,7 @@ export default function Map(tweets) {
     <MapContainer
       center={center}
       zoom={4}
-      style={{ height: "55vh", width: "100%", zIndex: '0' }}
+      style={{ height: "50vh", width: "100%", zIndex: '0' }}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

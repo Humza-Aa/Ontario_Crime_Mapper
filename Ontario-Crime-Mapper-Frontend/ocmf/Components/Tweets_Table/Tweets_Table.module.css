@@ -1,44 +1,33 @@
-.tableContainer{
-  /* width: 100vw; */
+.tableContainer {
+  /* display: contents; */
+  background-color: rgb(43, 42, 42);
   overflow: hidden;
   overflow-x: auto;
   overflow-y: auto;
-  height: 50vh;
+  max-height: 100%;
+  /* width: 70%; */
 }
 
-.tableContainer > table {
-  width: auto;
+.table {
   border-collapse: collapse;
-}
-
-.headerRow{
-  background-color: rgb(126, 114, 114);
-  
+  border: 1px solid rgb(52, 52, 52);
 }
 
 .headerRow > th {
-  background-color: rgb(126, 114, 114);
+  background-color: rgb(97, 94, 94);
   padding: 5px;
   position: sticky;
   top: 0;
 }
 
-.tableRow {
-  width: 100%;
-  font-size: small;
+.headerCol, .tableRow > td {
+  border: 1px solid rgb(61, 60, 60);
+  padding: 8px;
+  text-align: left;
 }
 
-.tableRow > td {
-  text-align: center;
-  padding: 10px;
-  border-bottom: 1px solid white;
-  /* width: fit-content; */
-  height: 0.5px;
-}
-
-.descriptionTab {
-  overflow: hidden;
-  overflow-y: auto;
-  /* max-height: 0.5px; */
-  /* font-size: 2rem; */
+.susImage {
+  width: 60px;
+  height: 50px;
+  padding: 5px;
 }
