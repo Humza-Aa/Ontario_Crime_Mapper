@@ -32,7 +32,7 @@ export default function TweetsTable(tweet) {
             {tweet.props.map((value, key) => {
               return (
                 <>
-                  {!value.Updates ? (
+                  {/* {!value.Updates ? ( */}
                     <tr className={styles.tableRow} key={key}>
                       <td className={styles.statusTab}>{value.Status}</td>
                       <td className={styles.nameTab}>
@@ -65,7 +65,7 @@ export default function TweetsTable(tweet) {
                         {value.Description}
                       </td>
                     </tr>
-                  ) : null}
+                  {/* ) : null} */}
                 </>
               );
             })}
