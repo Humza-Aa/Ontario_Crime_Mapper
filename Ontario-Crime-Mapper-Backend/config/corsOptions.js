@@ -4,8 +4,9 @@ const app = express();
 const allowedOrigins = require('./allowedOrigin');
 
 const corsOptions = {
-    origin: 'https://crimevue.vercel.app',
+    origin: allowedOrigins,
     credentials: true,
+    preflightContinue: true,
     optionSuccessStatus: 200
 
 }
