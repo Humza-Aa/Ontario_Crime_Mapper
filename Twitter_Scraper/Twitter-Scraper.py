@@ -3,6 +3,7 @@ import nltk
 from pymongo import MongoClient
 from getpass import getpass
 from time import sleep
+from datetime import datetime, timedelta
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -14,6 +15,12 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+from selenium.webdriver.chrome.service import Service as ChromeService
+
+from webdriver_manager.chrome import ChromeDriverManager
+
+import certifi; 
+
 
 # essential entity models downloads
 nltk.downloader.download('maxent_ne_chunker')
@@ -24,6 +31,13 @@ nltk.downloader.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
 
+# essential entity models downloads
+nltk.downloader.download('maxent_ne_chunker')
+nltk.downloader.download('words')
+nltk.downloader.download('treebank')
+nltk.downloader.download('maxent_treebank_pos_tagger')
+nltk.downloader.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
 
 def getTweetData(tweet):
@@ -33,7 +47,7 @@ def getTweetData(tweet):
     except NoSuchElementException:
         return
     try:
-        #This only gets one image, what if there are more?
+        # This only gets one image, what if there are more?
         tweetImage = tweet.find_element(
             By.XPATH, ".//div[1]/div[1]//div[2]/div[2]//img").get_attribute("src")
     except NoSuchElementException:
@@ -45,12 +59,14 @@ def getTweetData(tweet):
     tweetInfo = [tweetText, tweetTime, tweetImage]
     return tweetInfo
 
+
 def ScraperMain():
     twitterUsername = os.getenv('TW_USERNAME')
     twitterPassword = os.getenv('TW_PASSWORD')
 
-    # Setting up driver
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+
+    # driver = webdriver.Chrome()
     driver.maximize_window()
     driver.get('https://www.twitter.com/login')
     sleep(3)
@@ -80,13 +96,13 @@ def ScraperMain():
         By.XPATH, "//span[contains(text(),'Toronto Police Operations')]")
     SearchQuery.click()
 
-
     # Storing Tweet data in list
     tweetData = []
     tweetIds = set()
     lastPos = driver.execute_script("return window.pageYOffset;")
     scrolling = True
     maxDate = False
+    stopDate = str((datetime.today() - timedelta(days=30)).strftime('%Y-%m-%d'))
 
     while (scrolling and not (maxDate)):
         # Find Tweets
@@ -101,7 +117,7 @@ def ScraperMain():
                     tweetIds.add(tweet)
                     currentTweetInfo.append(tweetId)
                     tweetData.append(currentTweetInfo)
-                    if "2023-05-25" in currentTweetInfo[1]:
+                    if stopDate in currentTweetInfo[1]:
                         maxDate = True
                         break
 
@@ -124,7 +140,6 @@ def ScraperMain():
                 break
     print("Tweets Scraped")
     return tweetData
-
 
 
 def sortData(scrapedTweet):
@@ -178,7 +193,8 @@ def sortData(scrapedTweet):
                     locationcheck = locationcheck.replace("&", "")
                 geolocator = Nominatim(user_agent="Twitter_Scraper")
                 geocode = lambda query: geolocator.geocode("%s, Toronto ON" % query)
-                geocode2 = RateLimiter(geocode, min_delay_seconds=2)
+                geocode2 = RateLimiter(geocode, min_delay_seconds=0.001)
+                sleep(1)
                 locationcor = geocode2(locationcheck)
                 if locationcor is not None:
                     locationcor2 = [locationcor.latitude, locationcor.longitude]
