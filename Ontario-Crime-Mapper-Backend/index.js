@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const mongoose = require("mongoose");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
+const { Server } = require("socket.io");
 
 // Importing cors
-  const cors = require('cors');
-  const corsOptions = require('./config/corsOptions');
+const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
 
-  app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 //Importing Routes
 const authRoute = require("./routes/auth");
@@ -22,9 +23,7 @@ const DataManageRoute = require("./routes/dataManageRoute");
 
 //connect to db
 mongoose
-  .connect(
-    process.env.MONGODB_LINK
-  )
+  .connect(process.env.MONGODB_LINK)
   .then(() => console.log("Connected to db"))
   .catch((error) => {
     console.log(error);
@@ -38,16 +37,6 @@ mongoose.connection.on("error", (err) => {
 app.use(express.json());
 app.use(cookieParser());
 
-
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'https://crimevue.vercel.app');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   next();
-// });
-
-
 app.get("/home", (req, res) => {
   res.send("Hello World!");
 });
@@ -59,10 +48,24 @@ app.use("/api/verifyToken", clientJWTCheck);
 
 //Verified Routes
 app.use(verifyJWT.verifyJWT);
-app.use('/api/post', postRoute);
+app.use("/api/post", postRoute);
 app.use("/api/getTweets", DataManageRoute);
 
-
-app.listen(process.env.PORT, () =>
+const expressServer = app.listen(process.env.PORT, () =>
   console.log(`Server is running on Port: ${process.env.PORT}`)
 );
+
+// Setting up Socket.io
+const io = new Server(expressServer, {
+  cors: {
+    origin:
+      process.env.NODE_ENV === "production"
+        ? false
+        : ["http://localhost:3000", "http://127.0.0.1:3000"],
+  },
+});
+
+io.on("connection", (socket) => {
+  const count = io.engine.clientsCount;
+  console.log(count);
+});
