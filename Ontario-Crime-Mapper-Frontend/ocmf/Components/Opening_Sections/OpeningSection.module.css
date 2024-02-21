@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
 
 .Hero {
-  height: 90%;
+  /* height: 90%; */
   background-color: transparent;
   /* background-image: url("/HeroSection.jpg"); */
   background-repeat: no-repeat;
@@ -18,7 +18,7 @@
 }
 
 .Content {
-  height: 100%;
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
