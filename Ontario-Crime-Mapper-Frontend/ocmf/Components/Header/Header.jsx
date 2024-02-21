@@ -28,8 +28,6 @@ import {
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import Data from "../../Data/Header/Header";
 
-const Links = ["Dashboard", "Projects", "Team"];
-
 const NavLink = (props) => {
   const { children } = props;
   return (
@@ -43,6 +41,8 @@ const NavLink = (props) => {
         bg: useColorModeValue("gray.200", "gray.700"),
       }}
       href={"#"}
+      color="whiteAlpha.600"
+      fontSize="16px"
     >
       {children}
     </Box>
@@ -79,8 +79,8 @@ export default function Header(username) {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {Data.HeaderLinks.map((link) => (
+                <NavLink key={Data.HeaderLinks}>{link.name}</NavLink>
               ))}
             </HStack>
           </HStack>
@@ -96,7 +96,7 @@ export default function Header(username) {
               </Button>
             </Link>
             <Link href={`${Data.HeaderBtns[0].href}`}>
-              <Button colorScheme={"teal"} variant={"solid"} w="90px">
+              <Button colorScheme={"teal"} variant={"solid"} size={"sm"}>
                 {Data.HeaderBtns[0].name}
               </Button>
             </Link>
@@ -106,8 +106,8 @@ export default function Header(username) {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {Data.HeaderLinks.map((link) => (
+                <NavLink key={link}>{link.name}</NavLink>
               ))}
             </Stack>
           </Box>
