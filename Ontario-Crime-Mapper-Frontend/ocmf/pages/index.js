@@ -1,6 +1,6 @@
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
-import MapSection from "../Components/Map_Section/MapSection";
+import SneakPeak from "../Components/Sneak_Peak/SneakPeak";
 import App_Overview from "../Components/Opening_Sections/App_Overview/App_Overview";
 import OpeningSection from "../Components/Opening_Sections/OpeningSection";
 import TestimonialSection from "../Components/Testimonials/TestimonialSection";
@@ -11,9 +11,9 @@ export default function Home() {
       <Header />
       <OpeningSection />
       <App_Overview />
-      <MapSection />
-      <TestimonialSection />
-      <Footer />
+      <SneakPeak />
+      {/* <TestimonialSection /> */}
+      {/* <Footer /> */}
     </>
   );
 }
