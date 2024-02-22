@@ -13,7 +13,7 @@ export default function Home() {
       <App_Overview />
       <SneakPeak />
       {/* <TestimonialSection /> */}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
