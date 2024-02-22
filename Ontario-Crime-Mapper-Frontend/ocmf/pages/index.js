@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      
+      <OpeningSection />
       <App_Overview />
       <MapSection />
       <TestimonialSection />

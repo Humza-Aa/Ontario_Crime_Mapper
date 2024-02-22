@@ -1,63 +1,59 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./OpeningSection.module.css";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import Header from "../Header/Header";
-import MapSection from "../Map_Section/MapSection";
-import App_Overview from "./App_Overview/App_Overview";
-
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import CityAni from "./Animations/CityAni";
 
 export default function OpeningSection() {
-  // const App_Overview = dynamic(() => import("./App_Overview/App_Overview"), {
-  //   ssr: false,
-  // });
-  // const MapSection = dynamic(() => import("../Map_Section/MapSection"), {
-  //   ssr: false,
-  // });
-  const TestimonialSection = dynamic(
-    () => import("../Testimonials/TestimonialSection"),
-    {
-      ssr: false,
-    }
-  );
-  const Footer = dynamic(() => import("../Footer/Footer"), {
-    ssr: false,
-  });
-
   return (
     <>
-      <Header />
-      <div
-        className={styles.Hero}
-        
-      >
-        <div className={styles.Blur}>
-          <div className={styles.Content}>
-            <div className={styles.headlineDiv}>
-              <h1 className={styles.Headline}>
-                Stay Informed. <br /> Empower Your Safety
-              </h1>
-              <div className={styles.CallToAction}>
-                <p>
+      <Box px="30px">
+        <Box pt="80px" pb="120px">
+          <Box>
+            <Flex
+              flexDir={{
+                base: "column",
+                lg: "row",
+                xl: "row",
+                "2xl": "row",
+              }}
+              gap="10px"
+            >
+              <Box w="fit-content" pr="30px">
+                <Heading
+                  size={{
+                    base: "2xl",
+                    lg: "3xl",
+                    xl: "2xl",
+                    "2xl": "3xl",
+                  }}
+                >
+                  Stay Informed. <br /> Empower Your Safety
+                </Heading>
+                <Text
+                  pt="10px"
+                  fontSize={{ md: "2xl", lg: "2xl", xl: "2xl", "2xl": "3xl" }}
+                  color="whiteAlpha.600"
+                >
                   Explore crime incidents in your neighborhood with a single
                   click.
-                </p>
-                <Link href="/loginPage">
-                  {/* <button> */}
-                  Lets Get Started{" "}
-                  <FontAwesomeIcon icon={faArrowRight} bounce />
-                  {/* </button> */}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <App_Overview />
-      <MapSection />
-      <TestimonialSection />
-      <Footer />
+                </Text>
+              </Box>
+              <Flex justifyContent={{ base: "center", lg: "start" }}>
+                <Box
+                  w={{
+                    base: "300px",
+                    sm: "300px",
+                    md: "200px",
+                    lg: "300px",
+                    xl: "400px",
+                  }}
+                >
+                  <CityAni />
+                </Box>
+              </Flex>
+            </Flex>
+            <Box h="100%"></Box>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 }
