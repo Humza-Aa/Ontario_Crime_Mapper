@@ -46,8 +46,6 @@ function StatusIcon(status) {
   // }
   else if (status.toLowerCase().includes("sudden death")) {
     return IconMaker("Sudden_Death");
-  } else if (status.toLowerCase().includes("sudden death")) {
-    return IconMaker("Sudden_Death");
   } else if (status.toLowerCase().includes("suspicious incident")) {
     return IconMaker("Suspicious_Incident");
   } else if (status.toLowerCase().includes("unknown trouble")) {

@@ -20,7 +20,7 @@ export default function Legend() {
         {Data.Legend.map((item, key) => {
           return (
             <>
-              <Popover>
+              <Popover key={key}>
                 <PopoverTrigger>
                   <Button p="20px">
                     {" "}
@@ -36,10 +36,8 @@ export default function Legend() {
                 <PopoverContent>
                   <PopoverArrow />
                   <PopoverCloseButton />
-                  <PopoverHeader>Confirmation!</PopoverHeader>
-                  <PopoverBody>
-                    Are you sure you want to have that milkshake?
-                  </PopoverBody>
+                  <PopoverHeader>{item.Name}</PopoverHeader>
+                  <PopoverBody>{item.Description}</PopoverBody>
                 </PopoverContent>
               </Popover>
             </>
