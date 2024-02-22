@@ -7,7 +7,9 @@ export default function MapSneakP() {
         <Box px="20px">
           <Center>
             <Box p="20px">
-              <Heading size="lg" color="whiteAlpha.600">Our Interactive Map</Heading>
+              <Heading size="lg" color="whiteAlpha.600">
+                Our Interactive Map
+              </Heading>
             </Box>
           </Center>
           <Box>
@@ -21,10 +23,10 @@ export default function MapSneakP() {
                   textAlign={{ base: "center", lg: "" }}
                   color="whiteAlpha.600"
                 >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-                  nostrum a in eveniet neque earum natus sint. Eaque dolores
-                  ullam corporis. Ab voluptate maiores velit totam dolor tempore
-                  esse! Animi.
+                  Explore crime incidents effortlessly using our interactive
+                  map. Our specially designed markers simplify the
+                  identification of various crime types, providing you with a
+                  quick and clear snapshot of the local crime scenario.
                 </Text>
               </Box>
               <Box
