@@ -2,22 +2,19 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 import axios from "../../lib/axios";
-import loginImage from "../../public/loginImage.jpg";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import cookie from "js-cookie";
 import {
   Box,
   Button,
+  Center,
   Checkbox,
   Flex,
   FormControl,
   FormLabel,
   Heading,
   Input,
+  Link,
   Stack,
   Text,
   useColorModeValue,
@@ -25,7 +22,6 @@ import {
 
 export default function LoginForm() {
   const router = useRouter();
-  // const {auth, setAuth} = useContext(AuthContext)
 
   const { setAuth } = useContext(AuthContext);
 
@@ -39,9 +35,9 @@ export default function LoginForm() {
 
   const login_url = "/api/User/login";
 
-  // useEffect(() => {
-  //   emailRef.current.focus();
-  // }, []);
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
 
   useEffect(() => {
     setErrorMsg("");
@@ -49,6 +45,10 @@ export default function LoginForm() {
 
   async function submit(e) {
     e.preventDefault();
+    if (email == "" || password == "") {
+      setErrorMsg("Please enter Email and Password")
+      return;
+    }
     try {
       const response = await axios.post(
         login_url,
@@ -61,14 +61,12 @@ export default function LoginForm() {
           withCredentials: true,
         }
       );
-      // console.log(response.data.refreshToken);
+
       const accessToken = response.data.accessToken;
       cookie.set("refresh_jwt", response.data.refreshToken, { expires: 24 });
       setAuth({ email, password, accessToken });
       router.push(`${window.location.origin}/ProtectedRoutes/HomePage`);
       setLoggedIn(true);
-      // setEmail("");
-      // setPassword("");
     } catch (error) {
       console.log(error);
       if (!error?.response) {
@@ -92,10 +90,9 @@ export default function LoginForm() {
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
-        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack w={{ base: "90%", md: "md" }} spacing={8} py={12}>
           <Stack align={"center"}>
-            <Heading fontSize={"4xl"}>Sign in to your account</Heading>
-
+            <Heading fontSize={"4xl"}>Sign In</Heading>
           </Stack>
           <Box
             rounded={"lg"}
@@ -103,16 +100,52 @@ export default function LoginForm() {
             boxShadow={"lg"}
             p={8}
           >
+            <Box>
+              <Center>
+                <Heading pb="15px">
+                  <Link
+                    href="/"
+                    _hover={{
+                      textDecoration: "none",
+                    }}
+                  >
+                    CrimeVue
+                  </Link>
+                </Heading>
+              </Center>
+            </Box>
+            {errorMsg ? (
+              <>
+                <Text ref={errorRef} py="10px" color="red">
+                  {errorMsg}
+                </Text>
+              </>
+            ) : (
+              <>
+                <Text ref={errorRef}></Text>
+              </>
+            )}
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input
+                  type="email"
+                  ref={emailRef}
+                  required
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" />
+                <Input
+                  type="password"
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </FormControl>
-              <Stack spacing={10}>
+              <Stack spacing={4}>
                 <Stack
                   direction={{ base: "column", sm: "row" }}
                   align={"start"}
@@ -121,12 +154,20 @@ export default function LoginForm() {
                   <Checkbox>Remember me</Checkbox>
                   <Text color={"teal.400"}>Forgot password?</Text>
                 </Stack>
+                <Center>
+                  <Stack>
+                    <Text color={"teal.400"}>
+                      <Link href="/registerPage">Create a Account?</Link>
+                    </Text>
+                  </Stack>
+                </Center>
                 <Button
                   bg={"teal"}
                   color={"white"}
                   _hover={{
                     bg: "teal.500",
                   }}
+                  onClick={submit}
                 >
                   Sign in
                 </Button>
