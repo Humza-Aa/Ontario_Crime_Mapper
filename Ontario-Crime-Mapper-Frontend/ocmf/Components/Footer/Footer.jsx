@@ -10,8 +10,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { ReactNode } from "react";
+import { FaGithub, FaHome, FaLinkedin } from "react-icons/fa";
 
 const Logo = (props) => {
   return (
@@ -63,14 +62,20 @@ export default function Footer() {
         <Logo />
         <Text>© 2024 CrimeVue. All rights reserved</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
+          <SocialButton label={"Github"} href={"https://github.com/Humza-Aa"}>
+            <FaGithub />
           </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
-            <FaYoutube />
+          <SocialButton
+            label={"LinkedIn"}
+            href={"https://linkedin.com/in/humza-aamir"}
+          >
+            <FaLinkedin />
           </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
-            <FaInstagram />
+          <SocialButton
+            label={"Portfolio"}
+            href={"https://humza-aamir.vercel.app/"}
+          >
+            <FaHome />
           </SocialButton>
         </Stack>
       </Container>

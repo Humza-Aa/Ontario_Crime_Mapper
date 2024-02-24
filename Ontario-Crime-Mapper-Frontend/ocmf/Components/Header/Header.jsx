@@ -1,42 +1,33 @@
 "use client";
-import logout from "../../lib/logout";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
-import { useContext, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import logout from "../../lib/logout";
 
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Flex,
-  Avatar,
-  HStack,
-  Text,
-  IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
+  Center,
+  Flex,
+  HStack,
   Heading,
+  IconButton,
+  Image,
   Link,
   Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
   PopoverTrigger,
   Portal,
-  PopoverContent,
-  PopoverArrow,
-  PopoverHeader,
-  PopoverCloseButton,
-  PopoverBody,
-  PopoverFooter,
-  Image,
-  Divider,
+  Stack,
+  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import Data from "../../Data/Header/Header";
 
 const NavLink = (props) => {
@@ -129,7 +120,9 @@ export default function Header(username) {
                 <Portal>
                   <PopoverContent>
                     <PopoverArrow />
-                    <PopoverHeader>Hello Officer, {username.props}</PopoverHeader>
+                    <PopoverHeader>
+                      Hello Officer, {username.props}
+                    </PopoverHeader>
                     <PopoverCloseButton />
                     <PopoverBody>
                       <Flex flexDir="column" gap="10px">
@@ -142,13 +135,15 @@ export default function Header(username) {
                       </Flex>
                     </PopoverBody>
                     <PopoverFooter>
-                      <Button
-                        colorScheme="teal"
-                        h="27px"
-                        onClick={() => logout(router, setAuth)}
-                      >
-                        Logout
-                      </Button>
+                      <Center>
+                        <Button
+                          colorScheme="teal"
+                          h="27px"
+                          onClick={() => logout(router, setAuth)}
+                        >
+                          Logout
+                        </Button>
+                      </Center>
                     </PopoverFooter>
                   </PopoverContent>
                 </Portal>
