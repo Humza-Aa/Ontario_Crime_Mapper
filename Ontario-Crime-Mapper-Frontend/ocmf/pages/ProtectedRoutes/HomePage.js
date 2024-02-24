@@ -49,7 +49,7 @@ export default function HomePage({ data }) {
     <>
       <Header props={data[1]} />
       <MapWithNoSSR props={tweets} />
-      <TweetsTable props={tweets} />
+      {/* <TweetsTable props={tweets} /> */}
     </>
   );
 }
