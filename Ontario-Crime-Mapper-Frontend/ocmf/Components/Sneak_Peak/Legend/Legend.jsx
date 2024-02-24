@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   Popover,
@@ -16,10 +17,10 @@ import Data from "../../../Data/Sneak_Peak/Legend/LegendD";
 export default function Legend() {
   return (
     <>
-      <Flex flexWrap="wrap" gap="10px" justifyContent="center">
-        {Data.Legend.map((item, key) => {
-          return (
-            <>
+      <Box>
+        <Flex flexWrap="wrap" gap="10px" justifyContent="center">
+          {Data.Legend.map((item, key) => {
+            return (
               <Popover key={key}>
                 <PopoverTrigger>
                   <Button p="20px">
@@ -40,10 +41,10 @@ export default function Legend() {
                   <PopoverBody>{item.Description}</PopoverBody>
                 </PopoverContent>
               </Popover>
-            </>
-          );
-        })}
-      </Flex>
+            );
+          })}
+        </Flex>
+      </Box>
     </>
   );
 }

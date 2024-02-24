@@ -19,9 +19,7 @@ export default function SneakPeak() {
               Legend
             </Heading>
           </Center>
-          <Flex>
-            <Legend />
-          </Flex>
+          <Legend />
         </Box>
       </Box>
     </>
