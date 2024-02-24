@@ -24,6 +24,17 @@ import {
   Stack,
   Heading,
   Link,
+  Popover,
+  PopoverTrigger,
+  Portal,
+  PopoverContent,
+  PopoverArrow,
+  PopoverHeader,
+  PopoverCloseButton,
+  PopoverBody,
+  PopoverFooter,
+  Image,
+  Divider,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import Data from "../../Data/Header/Header";
@@ -51,6 +62,8 @@ const NavLink = (props) => {
 
 export default function Header(username) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
+  const { setAuth } = useContext(AuthContext);
 
   return (
     <>
@@ -84,23 +97,64 @@ export default function Header(username) {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={"center"}>
-            <Link href={`${Data.HeaderBtns[1].href}`}>
-              <Button
-                variant={"outline"}
-                colorScheme={"teal"}
-                size={"sm"}
-                mr={4}
-              >
-                {Data.HeaderBtns[1].name}
-              </Button>
-            </Link>
-            <Link href={`${Data.HeaderBtns[0].href}`}>
-              <Button colorScheme={"teal"} variant={"solid"} size={"sm"}>
-                {Data.HeaderBtns[0].name}
-              </Button>
-            </Link>
-          </Flex>
+          {!username.props ? (
+            <>
+              <Flex alignItems={"center"}>
+                <Link href={`${Data.HeaderBtns[1].href}`}>
+                  <Button
+                    variant={"outline"}
+                    colorScheme={"teal"}
+                    size={"sm"}
+                    mr={4}
+                  >
+                    {Data.HeaderBtns[1].name}
+                  </Button>
+                </Link>
+                <Link href={`${Data.HeaderBtns[0].href}`}>
+                  <Button colorScheme={"teal"} variant={"solid"} size={"sm"}>
+                    {Data.HeaderBtns[0].name}
+                  </Button>
+                </Link>
+              </Flex>
+            </>
+          ) : (
+            <>
+              <Popover>
+                <PopoverTrigger>
+                  <Button>
+                    <Image src="/Header/police.png" h="80%" pr="10px" />
+                    {username.props}
+                  </Button>
+                </PopoverTrigger>
+                <Portal>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverHeader>Hello Officer, {username.props}</PopoverHeader>
+                    <PopoverCloseButton />
+                    <PopoverBody>
+                      <Flex flexDir="column" gap="10px">
+                        <Button justifyContent="start" variant="ghost">
+                          Profile
+                        </Button>
+                        <Button justifyContent="start" variant="ghost">
+                          Notifications
+                        </Button>
+                      </Flex>
+                    </PopoverBody>
+                    <PopoverFooter>
+                      <Button
+                        colorScheme="teal"
+                        h="27px"
+                        onClick={() => logout(router, setAuth)}
+                      >
+                        Logout
+                      </Button>
+                    </PopoverFooter>
+                  </PopoverContent>
+                </Portal>
+              </Popover>
+            </>
+          )}
         </Flex>
 
         {isOpen ? (
@@ -116,4 +170,3 @@ export default function Header(username) {
     </>
   );
 }
-
