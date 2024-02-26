@@ -53,13 +53,13 @@ export default function HomePage({ data }) {
       <Header props={data[1]} />
       <Box p="10px">
         <Flex wrap="wrap">
-          <Box w={{ base: "100%", md: "60%" }} h="60vh">
+          <Box w={{ base: "100%", md: "50%" }}>
             <MapWithNoSSR props={tweets} />
           </Box>
           <Box w={{ base: "100%", md: "30%" }} px="10px">
             s
           </Box>
-          <Box w={{ base: "100%", md: "60%" }} pt="10px">
+          <Box w={{ base: "100%", md: "50%" }} pt="10px">
             <TweetsTable props={tweets} />
           </Box>
           <Box w={{ base: "100%", md: "40%" }}>s</Box>

@@ -10,7 +10,10 @@ import {
   TableContainer,
   Box,
   Flex,
+  Center,
 } from "@chakra-ui/react";
+import PaginationComponent from "./Pagination/Pagination";
+import { useState } from "react";
 
 function LocationCheck(location) {
   if (location == undefined) {
@@ -27,48 +30,64 @@ function LocationCheck(location) {
 }
 
 export default function TweetsTable(tweet) {
-  // console.log(tweet)
+  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const paginatedData = tweet.props.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
   return (
     <>
-      <TableContainer w="100%">
+      <TableContainer scrollBehavior="auto" overflow-y="auto">
         <Table variant="simple" size="sm">
           <Thead bg="blackAlpha.500">
             <Tr>
-              <Th>Person Information</Th>
-              <Th>Crime Description</Th>
+              <Th position="sticky" top="0">
+                Person Information
+              </Th>
+              <Th position="sticky" top="0">
+                Crime Description
+              </Th>
             </Tr>
           </Thead>
           <Tbody>
-            {tweet.props.map((value, key) => {
+            {paginatedData.map((value, key) => {
               return (
                 <>
-                  <Tr key={key}>
-                    <Td w="100px">
-                      <Flex >
-                        {value.ImageUrl != "No Image" ? (
-                          <>
-                            <Box>
-                              <img src={value.ImageUrl} alt="" />
-                            </Box>
-                          </>
-                        ) : (
-                          ""
-                        )}
-                        <Box>
-                          <b>Name:</b> {value.Name ? value.Name : "Unknown"}{" "}
-                          <br /> <b>Age:</b> {value.Age ? value.Age : "Unknown"}{" "}
-                          <br />
-                          <b>Location:</b> {LocationCheck(value.Location)}
-                        </Box>
-                      </Flex>
+                  <Tr whiteSpace="normal">
+                    <Td w="50%">
+                      <b>Status:</b>{" "}
+                      {/* <Box h="fit-content" whiteSpace="normal"> */}
+                      {value.Status}
+                      {/* </Box>{" "} */}
+                      <br />
+                      <b>Name:</b> {value.Name ? value.Name : "Unknown"} <br />{" "}
+                      <b>Age:</b> {value.Age ? value.Age : "Unknown"} <br />
+                      <b>Location:</b>{" "}
+                      {/* <Box h="fit-content" whiteSpace="normal"> */}
+                      {LocationCheck(value.Location)}
+                      {/* </Box> */}
                     </Td>
-
-                    {/* <Td w="50px">{value.Description}</Td> */}
+                    <Td whiteSpace="normal">{value.Description}</Td>
                   </Tr>
                 </>
               );
             })}
           </Tbody>
+          {/* <Tfoot w="100%" display="flex" justifyContent="center"> */}
+          <TableCaption m="0">
+            <PaginationComponent
+              pageCount={Math.ceil(tweet.props.length / itemsPerPage)}
+              onPageChange={handlePageChange}
+            />
+          </TableCaption>
+
+          {/* </Tfoot> */}
         </Table>
       </TableContainer>
     </>
