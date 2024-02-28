@@ -5,6 +5,7 @@ import GetTweetData from "../../lib/GetTweetData";
 import Header from "../../Components/Header/Header";
 import { Box, Divider, Flex } from "@chakra-ui/react";
 import { TPCDataY, CrimesPerYearByCategory } from "../../lib/TPCData";
+import PieChart from "../../Components/Graphs/PieGraph";
 
 export async function getServerSideProps({ req }) {
   const data = await TokenVerification(req);
@@ -83,6 +84,10 @@ export default function HomePage({ data }) {
                 Cdata={crimeDataBC}
                 chartTitle="Crime Statistics Over the Years"
               />
+            </Box>
+            <Divider />
+            <Box pt="10px" w="100%" h="350px" display="flex" justifyContent="center" alignItems="center">
+              <PieChart Cdata={crimeDataBC} selectedYear={2023} />
             </Box>
           </Box>
         </Flex>
