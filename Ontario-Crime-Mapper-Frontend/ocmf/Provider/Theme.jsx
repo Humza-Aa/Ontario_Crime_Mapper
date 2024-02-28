@@ -6,11 +6,15 @@ const theme = extendTheme({
     global: {
       // styles for the `body`
       body: {
-        bg: '#1a202c',
-        color: 'white',
+        // bg: '#1a202c',
+        // color: 'white',
         
       },
     },
+  },
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
   },
 })
 
