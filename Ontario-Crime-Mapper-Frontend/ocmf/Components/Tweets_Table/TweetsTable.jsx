@@ -60,17 +60,28 @@ export default function TweetsTable(tweet) {
               return (
                 <Tr whiteSpace="normal" key={key}>
                   <Td w="50%">
-                    <b>Status:</b>{" "}
-                    {/* <Box h="fit-content" whiteSpace="normal"> */}
-                    {value.Status}
-                    {/* </Box>{" "} */}
-                    <br />
-                    <b>Name:</b> {value.Name ? value.Name : "Unknown"} <br />{" "}
-                    <b>Age:</b> {value.Age ? value.Age : "Unknown"} <br />
-                    <b>Location:</b>{" "}
-                    {/* <Box h="fit-content" whiteSpace="normal"> */}
-                    {LocationCheck(value.Location)}
-                    {/* </Box> */}
+                    <Box display="flex" gap="10px" alignItems="center">
+                      <Box>
+                        {value.ImageUrl != "No Image" ? (
+                          <>
+                            <img src={value.ImageUrl} alt="" style={{height: "150px", width: "100px"}}/>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </Box>
+                      <Box>
+                        <b>Status:</b> {value.Status}
+                        <br />
+                        <b>Name:</b> {value.Name ? value.Name : "Unknown"}{" "}
+                        <br /> <b>Age:</b> {value.Age ? value.Age : "Unknown"}{" "}
+                        <br />
+                        <b>Location:</b>{" "}
+                        {/* <Box h="fit-content" whiteSpace="normal"> */}
+                        {LocationCheck(value.Location)}
+                        {/* </Box> */}
+                      </Box>
+                    </Box>
                   </Td>
                   <Td whiteSpace="normal">{value.Description}</Td>
                 </Tr>
