@@ -1,6 +1,8 @@
-const router = require('express').Router();
-const dataManagement = require('../middleware/dataManagement');
+const router = require("express").Router();
+const dataManagement = require("../middleware/dataManagement");
 
-router.get('/', dataManagement.getTweets);
+router.get("/getTweets", dataManagement.getTweets);
+
+router.get("/TPC", dataManagement.getTPCData);
 
 module.exports = router;

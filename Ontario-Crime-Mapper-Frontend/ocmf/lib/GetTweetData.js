@@ -1,7 +1,7 @@
 import axios from "./axios";
 
 export default async function GetTweetData(req) {
-  const getTweetsURL = "/api/getTweets"
+  const getTweetsURL = "/api/data/getTweets"
   // console.log(req);
   const cookies = req.cookies.refresh_jwt;
 

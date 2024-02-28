@@ -58,24 +58,22 @@ export default function TweetsTable(tweet) {
           <Tbody>
             {paginatedData.map((value, key) => {
               return (
-                <>
-                  <Tr whiteSpace="normal">
-                    <Td w="50%">
-                      <b>Status:</b>{" "}
-                      {/* <Box h="fit-content" whiteSpace="normal"> */}
-                      {value.Status}
-                      {/* </Box>{" "} */}
-                      <br />
-                      <b>Name:</b> {value.Name ? value.Name : "Unknown"} <br />{" "}
-                      <b>Age:</b> {value.Age ? value.Age : "Unknown"} <br />
-                      <b>Location:</b>{" "}
-                      {/* <Box h="fit-content" whiteSpace="normal"> */}
-                      {LocationCheck(value.Location)}
-                      {/* </Box> */}
-                    </Td>
-                    <Td whiteSpace="normal">{value.Description}</Td>
-                  </Tr>
-                </>
+                <Tr whiteSpace="normal" key={key}>
+                  <Td w="50%">
+                    <b>Status:</b>{" "}
+                    {/* <Box h="fit-content" whiteSpace="normal"> */}
+                    {value.Status}
+                    {/* </Box>{" "} */}
+                    <br />
+                    <b>Name:</b> {value.Name ? value.Name : "Unknown"} <br />{" "}
+                    <b>Age:</b> {value.Age ? value.Age : "Unknown"} <br />
+                    <b>Location:</b>{" "}
+                    {/* <Box h="fit-content" whiteSpace="normal"> */}
+                    {LocationCheck(value.Location)}
+                    {/* </Box> */}
+                  </Td>
+                  <Td whiteSpace="normal">{value.Description}</Td>
+                </Tr>
               );
             })}
           </Tbody>
