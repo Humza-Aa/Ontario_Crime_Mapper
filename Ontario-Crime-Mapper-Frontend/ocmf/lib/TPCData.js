@@ -1,19 +1,51 @@
 import axios from "./axios";
-export default async function TPCData(req) {
-  const getTweetsURL = "/api/getTweets";
-  // console.log(req);
-  const cookies = req.cookies.refresh_jwt;
 
+export const TPCDataY = async (req) => {
+  const getTPCDataURL = "api/data/TPCPerY";
+  const cookies = req.cookies.refresh_jwt;
   try {
-    const response = await axios.get(getTweetsURL, {
+    const response = await axios.get(getTPCDataURL, {
       withCredentials: true,
       headers: {
         cookies: cookies,
       },
-    });
-    console.log(response);
-    return response;
-  } catch (err) {
-    console.log(`Get Tweet Data: ${err.response.data}`);
+    }); // Update the API endpoint
+    const crimeData = response.data;
+    // console.log(crimeData)
+    return crimeData;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+
+    return {
+      props: {
+        crimeData: [],
+      },
+    };
   }
-}
+};
+
+export const CrimesPerYearByCategory = async (req) => {
+  const getCrimesPerYearByCategory = "api/data/TPCPerYearByCategory";
+  const cookies = req.cookies.refresh_jwt;
+  try {
+    const response = await axios.get(getCrimesPerYearByCategory, {
+      withCredentials: true,
+      headers: {
+        cookies: cookies,
+      },
+    }); // Update the API endpoint
+    const crimeData = response.data;
+    // console.log(crimeData)
+    return crimeData;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+
+    return {
+      props: {
+        crimeData: [],
+      },
+    };
+  }
+};
+
+export default { TPCDataY, CrimesPerYearByCategory };

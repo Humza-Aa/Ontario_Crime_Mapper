@@ -5,4 +5,8 @@ router.get("/getTweets", dataManagement.getTweets);
 
 router.get("/TPC", dataManagement.getTPCData);
 
+router.get("/TPCPerY", dataManagement.getCrimesPerY);
+
+router.get("/TPCPerYearByCategory", dataManagement.getCrimesPerYearByCategory);
+
 module.exports = router;
