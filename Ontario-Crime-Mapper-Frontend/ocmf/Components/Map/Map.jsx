@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "../../node_modules/leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
 import IconMaker from "./Icon/Icons";
+import { Box } from "@chakra-ui/react";
 
 export function ChangeView({ coords }) {
   const map = useMap();
@@ -40,12 +41,6 @@ function StatusIcon(status) {
     return IconMaker("Shooting");
   } else if (status.toLowerCase().includes("sound of gunshot")) {
     return IconMaker("Sound_Of_GunShot");
-  }
-  //  else if (status.toLowerCase().includes("sound of gunshot")) {
-  //   return IconMaker('Sound_Of_GunShot');
-  // }
-  else if (status.toLowerCase().includes("sudden death")) {
-    return IconMaker("Sudden_Death");
   } else if (status.toLowerCase().includes("sudden death")) {
     return IconMaker("Sudden_Death");
   } else if (status.toLowerCase().includes("suspicious incident")) {
@@ -66,66 +61,73 @@ export default function Map(tweets) {
   const center = [geoData.lat, geoData.lng];
 
   return (
-    <MapContainer
-      center={center}
-      zoom={4}
-      style={{ height: "50vh", width: "100%", zIndex: '0' }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {tweets.props.map((value, key) => {
-        if (value.LocationGoeCode.length != 0) {
-          return (
-            <Marker
-              position={[value.LocationGoeCode[0], value.LocationGoeCode[1]]}
-              icon={StatusIcon(value.Status)}
-              key={value._id}
-            >
-              <Popup>
-                <b>Situation:</b> {value.Status}
-                {value.Name && (
-                  <>
+    <>
+      <Box>
+        <MapContainer
+          center={center}
+          zoom={4}
+          style={{ height: "60vh", width: "100%", zIndex: "0" }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {tweets.props.map((value, key) => {
+            if (value.LocationGoeCode.length != 0) {
+              return (
+                <Marker
+                  position={[
+                    value.LocationGoeCode[0],
+                    value.LocationGoeCode[1],
+                  ]}
+                  icon={StatusIcon(value.Status)}
+                  key={key}
+                >
+                  <Popup>
+                    <b>Situation:</b> {value.Status}
+                    {value.Name && (
+                      <>
+                        <br />
+                        <b>Name: </b> {value.Name}
+                      </>
+                    )}
+                    {value.Age && (
+                      <>
+                        <br />
+                        <b>Age: </b> {value.Age}
+                      </>
+                    )}
                     <br />
-                    <b>Name: </b> {value.Name}
-                  </>
-                )}
-                {value.Age && (
-                  <>
+                    <b>Tweeted Time:</b> {value.TweetedTime}
                     <br />
-                    <b>Age: </b> {value.Age}
-                  </>
-                )}
-                <br />
-                <b>Tweeted Time:</b> {value.TweetedTime}
-                <br />
-                <b>Description: </b>
-                {value.Description}
-                {value.ImageUrl && value.ImageUrl != "No Image" && (
-                  <>
-                    <br />
-                    <b>Image: </b> <br />
-                    <img
-                      style={{
-                        width: "20em",
-                        height: "20em",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignContent: "center",
-                        margin: "0",
-                      }}
-                      src={value.ImageUrl}
-                      alt="Person Image"
-                    />
-                  </>
-                )}
-              </Popup>
-            </Marker>
-          );
-        }
-      })}
-      <ChangeView coords={center} />
-    </MapContainer>
+                    <b>Description: </b>
+                    {value.Description}
+                    {value.ImageUrl && value.ImageUrl != "No Image" && (
+                      <>
+                        <br />
+                        <b>Image: </b> <br />
+                        <img
+                          style={{
+                            width: "20em",
+                            height: "20em",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignContent: "center",
+                            margin: "0",
+                          }}
+                          src={value.ImageUrl}
+                          alt="Person Image"
+                        />
+                      </>
+                    )}
+                  </Popup>
+                </Marker>
+              );
+            }
+          })}
+          <ChangeView coords={center} />
+        </MapContainer>
+      </Box>
+    </>
   );
 }

@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./App_Overview.module.css";
 import {
   faBell,
   faBook,
@@ -8,8 +6,8 @@ import {
   faMapLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function App_Overview() {
-  const featureList = [
+const Data = {
+  featureList: [
     {
       Title: "Real-Time Crime Data",
       Icon: faClock,
@@ -45,35 +43,7 @@ export default function App_Overview() {
       Description:
         "Stay proactive with personalized notifications and alerts. Customize your preferences to receive alerts about crimes in your chosen areas or specific types of incidents. Be informed and take necessary precautions to ensure your safety.",
     },
-  ];
-  return (
-    <>
-      <div className={styles.OverviewSection}>
-        <div>
-          <h1 className={styles.Title}>
-            Stay Informed. Stay Secure. Stay One Step Ahead.
-          </h1>
-        </div>
-        <div className={styles.featureDivsLayout}>
-          {featureList.map((feature, key) => {
-            return (
-              <div className={styles.FeatureDiv} key={key}>
-                <div className={`${styles.FeatureDiv} ${styles.TitleDiv}`}>
-                  <div className={`${styles.FeatureDiv} ${styles.Title}`}>
-                    <div>
-                      <FontAwesomeIcon icon={feature.Icon} size="2xl" />
-                    </div>
-                    <h3 className={styles.FeatureTitle}>{feature.Title}</h3>
-                  </div>
-                  <div className={styles.FeatureDescription}>
-                    {feature.Description}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </>
-  );
-}
+  ],
+};
+
+export default Data;

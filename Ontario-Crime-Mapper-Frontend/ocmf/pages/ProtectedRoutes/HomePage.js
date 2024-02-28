@@ -1,19 +1,17 @@
 import dynamic from "next/dynamic";
-// import TweetsTable from "../../Components/Tweets_Table/TweetsTable";
 import { useEffect, useState } from "react";
 import TokenVerification from "../../Components/TokenVerification";
 import GetTweetData from "../../lib/GetTweetData";
 import Header from "../../Components/Header/Header";
-
+import { Box, Flex } from "@chakra-ui/react";
+import BarGraph from "../../Components/Graphs/BarGraph";
+import TPCData from "../../lib/TPCData";
 
 export async function getServerSideProps({ req }) {
-  // const [tweets, setTweets] = useState([])
-
   const data = await TokenVerification(req);
   const tweets = await GetTweetData(req);
+  const TCPData = await TPCData(req); 
 
-  // console.log(tweets.data[1]);
-  // does not allow access to page if not logged in
   if (data.status != 200) {
     return {
       redirect: {
@@ -40,16 +38,32 @@ export default function HomePage({ data }) {
   const MapWithNoSSR = dynamic(() => import("../../Components/Map/Map"), {
     ssr: false,
   });
-  
-  const TweetsTable = dynamic(() => import("../../Components/Tweets_Table/TweetsTable"), {
-    ssr: false,
-  });
+
+  const TweetsTable = dynamic(
+    () => import("../../Components/Tweets_Table/TweetsTable"),
+    {
+      ssr: false,
+    }
+  );
 
   return (
     <>
       <Header props={data[1]} />
-      <MapWithNoSSR props={tweets} />
-      <TweetsTable props={tweets} />
+      <Box p="10px">
+        <Flex wrap="wrap">
+          <Box w={{ base: "100%" }}>
+            <MapWithNoSSR props={tweets} />
+          </Box>
+          {/* <Box w={{ base: "100%", md: "30%" }} px="10px">
+            <BarGraph />
+            g
+          </Box> */}
+          <Box w={{ base: "100%" }} pt="10px">
+            <TweetsTable props={tweets} />
+          </Box>
+          {/* <Box w={{ base: "100%", md: "40%" }}>s</Box> */}
+        </Flex>
+      </Box>
     </>
   );
 }
