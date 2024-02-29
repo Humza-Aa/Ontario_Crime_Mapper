@@ -3,7 +3,16 @@ import { useEffect, useState } from "react";
 import TokenVerification from "../../Components/TokenVerification";
 import GetTweetData from "../../lib/GetTweetData";
 import Header from "../../Components/Header/Header";
-import { Box, Divider, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from "@chakra-ui/react";
 import { TPCDataY, CrimesPerYearByCategory } from "../../lib/TPCData";
 import PieChart from "../../Components/Graphs/PieGraph";
 
@@ -59,6 +68,18 @@ export default function HomePage({ data }) {
     ssr: false,
   });
 
+  // const PieChart = dynamic(() => import("../../Components/Graphs/PieGraph"), {
+  //   ssr: false,
+  // });
+
+  console.log(data[3]);
+  const years = data[3].map((entry) => entry._id);
+  const [selectedYear, setSelectedYear] = useState(years[0]);
+
+  const handleTabChange = (index) => {
+    setSelectedYear(years[index]);
+  };
+
   return (
     <>
       <Header props={data[1]} />
@@ -102,7 +123,18 @@ export default function HomePage({ data }) {
               justifyContent="center"
               alignItems="center"
             >
-              <PieChart Cdata={crimeDataBC} selectedYear={2023} />
+              <Tabs onChange={handleTabChange} h="100%" w="100%">
+                <TabList w="100%" overflowX="auto">
+                  {years.map((year) => (
+                    <Tab m="0" key={year}>
+                      {year}
+                    </Tab>
+                  ))}
+                </TabList>
+                <TabPanels h="100%">
+                  <PieChart Cdata={crimeDataBC} selectedYear={selectedYear} />
+                </TabPanels>
+              </Tabs>
             </Box>
           </Box>
         </Flex>
