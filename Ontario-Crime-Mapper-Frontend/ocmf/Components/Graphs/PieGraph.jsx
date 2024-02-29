@@ -4,7 +4,6 @@ import Chart from "chart.js/auto";
 const PieChart = (props) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  console.log(props)
 
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");

@@ -22,7 +22,7 @@ const LineGraph = (props) => {
       "#33FFF5", "#FFF533", "#FFA133", "#A1FF33", "#3357FF"
     ];
 
-    const categories = crimeData[0].map((_, index) => {
+    const categories = crimeData[0]?.map((_, index) => {
       return {
         label: crimeData[0][index].crimeCategory,
         data: crimeData.map((yearData) => yearData[index].crimeCount),
