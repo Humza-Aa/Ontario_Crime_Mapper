@@ -14,7 +14,6 @@ const LineGraph = (props) => {
 
     const years = props.Cdata.map((entry) => entry._id);
     const crimeData = props.Cdata.map((entry) => entry.crimeData);
-    // console.log(crimeData)
 
     
     const brightColors = [

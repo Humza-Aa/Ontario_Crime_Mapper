@@ -72,7 +72,6 @@ export default function HomePage({ data }) {
   //   ssr: false,
   // });
 
-  console.log(data[3]);
   const years = data[3].map((entry) => entry._id);
   const [selectedYear, setSelectedYear] = useState(years[0]);
 

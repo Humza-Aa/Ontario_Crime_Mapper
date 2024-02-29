@@ -12,7 +12,7 @@ const BarGraph = (props) => {
     const ctx = chartRef.current.getContext("2d");
 
     if (chartInstance.current) {
-      chartInstance.current.destroy(); // Destroy the existing chart if it exists
+      chartInstance.current.destroy();
     }
 
     const years = props.Cdata.map((entry) => entry._id);
@@ -34,7 +34,7 @@ const BarGraph = (props) => {
         ],
       },
       options: {
-        maintainAspectRatio: false, 
+        maintainAspectRatio: false,
         plugins: {
           title: {
             display: true,

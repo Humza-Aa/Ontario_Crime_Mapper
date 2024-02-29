@@ -9,10 +9,9 @@ export function ChangeView({ coords }) {
   map.setView(coords, 12);
   return null;
 }
-// let counter = 0;
+
 function StatusIcon(status) {
-  // counter = counter + 1;
-  // console.log(counter);
+
   if (status.toLowerCase().includes("missing")) {
     return IconMaker("Person_Missing");
   } else if (status.toLowerCase().includes("collision")) {

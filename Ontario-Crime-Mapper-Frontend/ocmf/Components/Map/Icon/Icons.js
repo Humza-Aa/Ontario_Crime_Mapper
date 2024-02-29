@@ -1,6 +1,3 @@
-// import L from 'leaflet';
-// import Person_MissingI from "../../../public/Icon_Images/Person_Missing.svg";
-
 import { Icon } from "leaflet";
 
 export default function IconMaker(IconName) {

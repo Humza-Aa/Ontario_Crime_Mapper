@@ -9,7 +9,7 @@ const PieChart = (props) => {
     const ctx = chartRef.current.getContext("2d");
 
     if (chartInstance.current) {
-      chartInstance.current.destroy(); // Destroy the existing chart if it exists
+      chartInstance.current.destroy(); 
     }
 
     const assaultData = props.Cdata.find(
@@ -48,9 +48,8 @@ const PieChart = (props) => {
         },
       },
     });
-  }, [props.Cdata, props.selectedYear]); // Re-render the chart when data or selectedYear changes
+  }, [props.Cdata, props.selectedYear]); 
 
-  // Function to generate random colors for the pie chart
   const getRandomColors = (count) => {
     const brightColors = [
       "#FF5733",
@@ -65,7 +64,6 @@ const PieChart = (props) => {
       "#3357FF",
     ];
 
-    // Repeating the colors if there are more categories than colors
     return Array.from(
       { length: count },
       (_, index) => brightColors[index % brightColors.length]

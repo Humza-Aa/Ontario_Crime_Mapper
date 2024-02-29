@@ -3,7 +3,6 @@ import Header from "../Components/Header/Header";
 import SneakPeak from "../Components/Sneak_Peak/SneakPeak";
 import App_Overview from "../Components/Opening_Sections/App_Overview/App_Overview";
 import OpeningSection from "../Components/Opening_Sections/OpeningSection";
-import TestimonialSection from "../Components/Testimonials/TestimonialSection";
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
       <OpeningSection />
       <App_Overview />
       <SneakPeak />
-      {/* <TestimonialSection /> */}
       <Footer />
     </>
   );
