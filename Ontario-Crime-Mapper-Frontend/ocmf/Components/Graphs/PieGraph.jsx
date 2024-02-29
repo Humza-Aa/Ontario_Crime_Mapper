@@ -9,7 +9,7 @@ const PieChart = (props) => {
     const ctx = chartRef.current.getContext("2d");
 
     if (chartInstance.current) {
-      chartInstance.current.destroy(); 
+      chartInstance.current.destroy();
     }
 
     const assaultData = props.Cdata.find(
@@ -41,14 +41,16 @@ const PieChart = (props) => {
       },
       options: {
         maintainAspectRatio: false,
-        title: {
-          display: true,
-          text: `Assaults Distribution for ${props.selectedYear}`,
-          fontSize: 16,
+        plugins: {
+          title: {
+            display: true,
+            text: `Crime Distribution for ${props.selectedYear}`,
+            fontSize: 16,
+          },
         },
       },
     });
-  }, [props.Cdata, props.selectedYear]); 
+  }, [props.Cdata, props.selectedYear]);
 
   const getRandomColors = (count) => {
     const brightColors = [

@@ -11,6 +11,16 @@ import {
   Box,
   Flex,
   Center,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+  Button,
 } from "@chakra-ui/react";
 import PaginationComponent from "./Pagination/Pagination";
 import { useState } from "react";
@@ -57,29 +67,62 @@ export default function TweetsTable(tweet) {
           </Thead>
           <Tbody>
             {paginatedData.map((value, key) => {
+              console.log(value);
               return (
                 <Tr whiteSpace="normal" key={key}>
                   <Td w="50%">
-                    <Box display="flex" gap="10px" alignItems="center">
+                    <Box display="flex" gap="10px" flexDir="column">
+                      {value.ImageUrl != "No Image" ? (
+                        <Popover>
+                          <PopoverTrigger>
+                            <Button size="sm">Image</Button>
+                          </PopoverTrigger>
+                          <PopoverContent>
+                            <PopoverArrow />
+                            <PopoverCloseButton />
+                            <PopoverHeader minW="fit-content">
+                              Person name: {value.Name}
+                            </PopoverHeader>
+                            <PopoverBody
+                              minW="fit-content"
+                              display="flex"
+                              justifyContent="center"
+                            >
+                              <img
+                                src={value.ImageUrl}
+                                alt=""
+                                style={{ height: "150px", width: "150px" }}
+                              />
+                            </PopoverBody>
+                          </PopoverContent>
+                        </Popover>
+                      ) : (
+                        <></>
+                      )}
+
                       <Box>
-                        {value.ImageUrl != "No Image" ? (
+                        <b>Status:</b> {value.Status}
+                        <br />
+                        {value.Name ? (
                           <>
-                            <img src={value.ImageUrl} alt="" style={{height: "150px", width: "100px"}}/>
+                            <b>Name:</b> {value.Name}
+                            <br />
                           </>
                         ) : (
                           <></>
                         )}
-                      </Box>
-                      <Box>
-                        <b>Status:</b> {value.Status}
+                        {value.Age ? (
+                          <>
+                            <b>Age:</b> {value.Age}
+                            <br />
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        <b>Date:</b> {value.TweetedTime}
+                        {/* {value.Location} */}
                         <br />
-                        <b>Name:</b> {value.Name ? value.Name : "Unknown"}{" "}
-                        <br /> <b>Age:</b> {value.Age ? value.Age : "Unknown"}{" "}
-                        <br />
-                        <b>Location:</b>{" "}
-                        {/* <Box h="fit-content" whiteSpace="normal"> */}
-                        {LocationCheck(value.Location)}
-                        {/* </Box> */}
+                        <b>Location:</b> {LocationCheck(value.Location)}
                       </Box>
                     </Box>
                   </Td>
@@ -88,15 +131,12 @@ export default function TweetsTable(tweet) {
               );
             })}
           </Tbody>
-          {/* <Tfoot w="100%" display="flex" justifyContent="center"> */}
           <TableCaption m="0">
             <PaginationComponent
               pageCount={Math.ceil(tweet.props.length / itemsPerPage)}
               onPageChange={handlePageChange}
             />
           </TableCaption>
-
-          {/* </Tfoot> */}
         </Table>
       </TableContainer>
     </>

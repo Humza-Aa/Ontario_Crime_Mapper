@@ -123,7 +123,12 @@ export default function HomePage({ data }) {
               alignItems="center"
             >
               <Tabs onChange={handleTabChange} h="100%" w="100%">
-                <TabList w="100%" overflowX="auto">
+                <TabList
+                  w="100%"
+                  overflowX={{ base: "auto", lg: "" }}
+                  scrollbarWidth={{ base: "thin", lg: "" }}
+                  scrollbarColor={{ base: "darkgrey lightgrey", lg: "" }}
+                >
                   {years.map((year) => (
                     <Tab m="0" key={year}>
                       {year}
