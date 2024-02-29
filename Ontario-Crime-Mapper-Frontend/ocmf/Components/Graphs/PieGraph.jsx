@@ -72,7 +72,7 @@ const PieChart = (props) => {
     );
   };
 
-  return <canvas ref={chartRef} width="20px" height="20px"></canvas>;
+  return <canvas ref={chartRef} width="100%" height="20px"></canvas>;
 };
 
 export default PieChart;
