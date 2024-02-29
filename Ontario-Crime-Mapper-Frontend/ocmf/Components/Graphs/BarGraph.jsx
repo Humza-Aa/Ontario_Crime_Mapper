@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
+import { chakra } from "@chakra-ui/react";
 import Chart from "chart.js/auto";
+
+const ChakraCanvas = chakra("canvas");
 
 const BarGraph = (props) => {
   const chartRef = useRef(null);
@@ -31,6 +34,7 @@ const BarGraph = (props) => {
         ],
       },
       options: {
+        maintainAspectRatio: false, 
         plugins: {
           title: {
             display: true,
@@ -55,9 +59,15 @@ const BarGraph = (props) => {
         },
       },
     });
-  }, [props.Cdata, props.chartTitle]); // Re-render the chart when data changes
+  }, [props.Cdata, props.chartTitle]);
 
-  return <canvas ref={chartRef} width="400" height="190"></canvas>;
+  return (
+    <ChakraCanvas
+      ref={chartRef}
+      w="100%"
+      h={{ base: "300px", lg: "100%" }}
+    ></ChakraCanvas>
+  );
 };
 
 export default BarGraph;

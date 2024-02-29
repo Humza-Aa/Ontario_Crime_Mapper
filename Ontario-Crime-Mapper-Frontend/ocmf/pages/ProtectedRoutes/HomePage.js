@@ -64,7 +64,7 @@ export default function HomePage({ data }) {
       <Header props={data[1]} />
       <Box p="10px">
         <Flex wrap="wrap" gap="10px">
-          <Box w={{ base: "100%", md: "55%" }}>
+          <Box w={{ base: "100%", lg: "55%" }}>
             <Flex flexDir="column" gap="10px">
               <Box>
                 <MapWithNoSSR props={tweets} />
@@ -74,19 +74,34 @@ export default function HomePage({ data }) {
               </Box>
             </Flex>
           </Box>
-          <Box w={{ base: "100%", md: "44%" }}>
-            <Box pb="10px">
+          <Box w={{ base: "100%", lg: "44%" }}>
+            <Box
+              pb="10px"
+              w={{ base: "100%" }}
+              h={{ base: "400px", lg: "300px" }}
+            >
               <BarGraph Cdata={crimeData} chartTitle="Crime Statistics" />
             </Box>
             <Divider />
-            <Box pt="10px">
+            <Box
+              pb="10px"
+              w={{ base: "100%" }}
+              h={{ base: "400px", lg: "300px" }}
+            >
               <LineGraph
                 Cdata={crimeDataBC}
                 chartTitle="Crime Statistics Over the Years"
               />
             </Box>
             <Divider />
-            <Box pt="10px" w="100%" h="350px" display="flex" justifyContent="center" alignItems="center">
+            <Box
+              pt="10px"
+              w={{ base: "100%" }}
+              h={{ base: "400px", lg: "300px" }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
               <PieChart Cdata={crimeDataBC} selectedYear={2023} />
             </Box>
           </Box>

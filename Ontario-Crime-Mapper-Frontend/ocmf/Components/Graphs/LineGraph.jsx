@@ -38,6 +38,7 @@ const LineGraph = (props) => {
         datasets: categories,
       },
       options: {
+        maintainAspectRatio: false, 
         scales: {
           x: {
             title: {
@@ -64,7 +65,7 @@ const LineGraph = (props) => {
     });
   }, [props.Cdata, props.chartTitle]);
 
-  return <canvas ref={chartRef} width="400" height="190"></canvas>;
+  return <canvas ref={chartRef} width="100%" height="190"></canvas>;
 };
 
 export default LineGraph;

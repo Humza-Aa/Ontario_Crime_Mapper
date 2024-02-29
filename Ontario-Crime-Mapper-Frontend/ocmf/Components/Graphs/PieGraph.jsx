@@ -40,6 +40,7 @@ const PieChart = (props) => {
         ],
       },
       options: {
+        maintainAspectRatio: false,
         title: {
           display: true,
           text: `Assaults Distribution for ${props.selectedYear}`,
