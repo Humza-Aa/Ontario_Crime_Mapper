@@ -69,7 +69,6 @@ export default function TweetsTable(tweet) {
           </Thead>
           <Tbody>
             {paginatedData.map((value, key) => {
-              console.log(value);
               return (
                 <Tr whiteSpace="normal" key={key}>
                   <Td w="50%">
