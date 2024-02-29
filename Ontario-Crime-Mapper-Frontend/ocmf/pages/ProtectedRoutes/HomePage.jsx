@@ -7,6 +7,7 @@ import {
   Box,
   Divider,
   Flex,
+  Heading,
   Tab,
   TabList,
   TabPanel,
@@ -90,11 +91,21 @@ export default function HomePage({ data }) {
                 <MapWithNoSSR props={tweets} />
               </Box>
               <Box>
+                <Box p="10px">
+                  <Heading size="md" textAlign="center">
+                    Toronto Police Twitter Feed
+                  </Heading>
+                </Box>
                 <TweetsTable props={tweets} />
               </Box>
             </Flex>
           </Box>
           <Box w={{ base: "100%", lg: "44%" }}>
+            <Box>
+              <Heading textAlign="center" size="md">
+                Historical Crime Statistics
+              </Heading>
+            </Box>
             <Box
               pb="10px"
               w={{ base: "100%" }}
@@ -126,7 +137,7 @@ export default function HomePage({ data }) {
                 <TabList
                   w="100%"
                   overflowX={{ base: "auto", lg: "" }}
-                  scrollbarWidth={{ base: "thin", lg: "" }}
+                  scrollbarWidth={{ base: "thin", lg: "thin" }}
                   scrollbarColor={{ base: "darkgrey lightgrey", lg: "" }}
                 >
                   {years.map((year) => (

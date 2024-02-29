@@ -21,6 +21,8 @@ import {
   PopoverCloseButton,
   PopoverAnchor,
   Button,
+  Badge,
+  Text,
 } from "@chakra-ui/react";
 import PaginationComponent from "./Pagination/Pagination";
 import { useState } from "react";
@@ -136,6 +138,9 @@ export default function TweetsTable(tweet) {
               pageCount={Math.ceil(tweet.props.length / itemsPerPage)}
               onPageChange={handlePageChange}
             />
+            <Badge colorScheme="blue">
+              <Text>@TPSOperations</Text>
+            </Badge>
           </TableCaption>
         </Table>
       </TableContainer>
