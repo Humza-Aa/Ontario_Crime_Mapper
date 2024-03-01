@@ -11,6 +11,16 @@ const getTweets = async (req, res) => {
   }
 };
 
+const getTweetsFilter = async (req, res) => {
+  try {
+    const tweetsData = await tweets.find({});
+    // console.log(tweetsData)
+    res.status(200).send(tweetsData);
+  } catch (error) {
+    console.log(`error ${error}`);
+  }
+};
+
 const getTPCData = async (req, res) => {
   try {
     const TPCData = await TPC.find({ REPORT_YEAR: 2014 });
@@ -43,11 +53,6 @@ const getCrimesPerY = async (req, res) => {
     ];
 
     const result = await TPC.aggregate(pipeline).exec();
-
-    // // Print the result
-    // result.forEach((entry) => {
-    //   console.log(`Year: ${entry._id}, Crime Count: ${entry.crimeCount}`);
-    // });
 
     res.status(200).send(result);
   } catch (error) {

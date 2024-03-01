@@ -13,6 +13,9 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  Input,
+  InputGroup,
+  Select,
 } from "@chakra-ui/react";
 import { TPCDataY, CrimesPerYearByCategory } from "../../lib/TPCData";
 import PieChart from "../../Components/Graphs/PieGraph";
@@ -80,6 +83,30 @@ export default function HomePage({ data }) {
     setSelectedYear(years[index]);
   };
 
+  const [filters, setFilters] = useState({
+    search: "",
+    category: "all",
+    // Add more filters as needed
+  });
+
+  const uniqueCategories = ["Name", "Status", "Age", "Date", "Location"];
+
+  const filterTweets = (tweets) => {
+    return tweets.filter((tweet) => {
+      if (filters.category === "all") {
+        // If category is set to "All categories," check all properties for a match
+        return Object.values(tweet).some((value) =>
+          value.toLowerCase().includes(filters.search.toLowerCase())
+        );
+      } else {
+        // Check the specified category for a match
+        return tweet[filters.category]
+          ?.toLowerCase()
+          .includes(filters.search.toLowerCase());
+      }
+    });
+  };
+
   return (
     <>
       <Header props={data[1]} />
@@ -96,7 +123,33 @@ export default function HomePage({ data }) {
                     Toronto Police Twitter Feed
                   </Heading>
                 </Box>
-                <TweetsTable props={tweets} />
+                <Box>
+                  <Box>
+                    <InputGroup mb={4}>
+                      <Input
+                        placeholder={`Search tweets by ${filters.category.toLowerCase()}...`}
+                        value={filters.search}
+                        onChange={(e) =>
+                          setFilters({ ...filters, search: e.target.value })
+                        }
+                      />
+                    </InputGroup>
+                    <Select
+                      value={filters.category}
+                      onChange={(e) =>
+                        setFilters({ ...filters, category: e.target.value })
+                      }
+                    >
+                      <option value="all">All Categories</option>
+                      {uniqueCategories.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </Select>
+                  </Box>
+                </Box>
+                <TweetsTable props={filterTweets(tweets)} />
               </Box>
             </Flex>
           </Box>
